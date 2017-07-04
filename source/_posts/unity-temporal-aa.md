@@ -4,7 +4,6 @@ title: Unity中Temporal AA
 date: 2015/2/25
 tags:
 - Unity
-thumbnail: /images/teaser/Vocaloid.jpg
 ---
 
 这个东西是trace在群里提到的，然后我看了一些相关资源[Filtering Approaches for

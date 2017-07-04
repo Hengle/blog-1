@@ -5,7 +5,6 @@ date: 2014/12/20
 tags:
 - KlayGE
 - C++
-thumbnail: /images/teaser/CodeGeass2.jpg
 ---
 
 之前一直有准备在研三的业余时间深入学习一套引擎，备选如下：

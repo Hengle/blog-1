@@ -4,7 +4,6 @@ title: Unity中矩阵变换、深度纹理及杂项
 date: 2015/2/21
 tags:
 - Unity
-thumbnail: /images/teaser/AngelBeats2.jpg
 ---
 
 在移植UE4的Temporal AA到Unity过程中，计算Camera Motion、Jitter等遇到了若干坑，记录一下。

@@ -4,7 +4,6 @@ title: Cryptographic failure while signing assembly
 date: 2015/7/25
 tags:
 - KlayGE
-thumbnail: /images/teaser/SwordArtOnline.jpg
 ---
 
 最近新装了Windows 10 preview，蛋疼的发现装不上Visual Studio 2013，只能先用Visual Studio 2012凑合...昨儿在编译KlayGE develop分支的时候发现挂在wpftoolkit上了，一开始还试图回滚+二分定位，但是发现毫无意义-。-

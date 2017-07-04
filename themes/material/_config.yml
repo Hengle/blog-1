@@ -34,7 +34,7 @@ scheme: Paradox
 # UI & UX: slogan, color, effect
 uiux:
     slogan: "A game developer interested in rendering, with a focus on the Unity."
-    theme_color: "#0097A7"
+    theme_color: "#EEEEEE"
     theme_sub_color: "#00838F"
     hyperlink_color: "#00838F"
     button_color: "#757575"
@@ -54,7 +54,7 @@ reading:
 # Thumbnail Settings
 thumbnail:
     purecolor:
-    random_amount: 19
+    random_amount: 15
 
 # Background Settings
 # bing available parameter:
@@ -74,7 +74,7 @@ img:
     avatar: "/img/avatar.jpg"
     daily_pic: "/img/daily_pic.jpg"
     sidebar_header: "/img/sidebar_header.png"
-    random_thumbnail: "/img/random/material-"
+    random_thumbnail: "/img/random/"
     footer_image:
         #upyun_logo:
             #link: "https://www.upyun.com/"

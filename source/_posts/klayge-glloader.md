@@ -4,7 +4,6 @@ title: glloader代码阅读笔记
 date: 2015/3/28
 tags:
 - KlayGE
-thumbnail: /images/teaser/Vocaloid2.jpg
 ---
 
 (准备慢慢把之前移植KlayGE过程中的笔记整理出来，估计先梳理完几个子项目，然后按照模块和例子写个系列吧...主要记录思路和一些学习体会~)

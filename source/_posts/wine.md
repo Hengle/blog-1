@@ -5,7 +5,6 @@ date: 2014/12/21
 tags:
 - C++
 updated: 2015/3/30
-thumbnail: /images/teaser/SwordArtOnline3.jpg
 ---
 
 这个其实是源自KlayGE移植OSX上的一个需求：在OSX上希望使用d3dcompile，配合[DXBC2GLSL](http://www.klayge.org/category/klayge/dxbc2glsl/)来生成OpenGL Shader。之前移植的时候是使用的NVidia Cg凑合，但是[Cg Profile](https://developer.nvidia.com/cg-profiles)在OpenGL 3.x开始不支持Multi-vendor，而且也发现对于`tex2DLOD`之类的函数支持的有问题。

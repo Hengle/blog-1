@@ -7,7 +7,6 @@ tags:
 - C#
 - Translation
 updated: 2016/3/7
-thumbnail: /images/teaser/GuiltyCrown.jpg
 ---
 
 本文是[Assembly Manipulation and C# / VB.NET Code Injection](http://www.codeproject.com/Articles/20565/Assembly-Manipulation-and-C-VB-NET-Code-Injection)的翻译，已得到作者授权。该教程作者(亦工具作者)现在在微软开发UnityVS...

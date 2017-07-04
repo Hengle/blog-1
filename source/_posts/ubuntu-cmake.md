@@ -4,7 +4,6 @@ title: Ubuntu下编译支持HTTPS的CMake
 date: 2016/8/14
 tags:
 - KlayGE
-thumbnail: /images/teaser/YouLieInApril.jpg
 ---
 
 仅用来记录一个小细节...这两天KlayGE升级了CMake版本要求3.4+，但是默认Ubuntu源或ppa上最多才到3.2，因此需要自己编译。下载源码之后直接编译安装没问题，但是遇到了如下错误

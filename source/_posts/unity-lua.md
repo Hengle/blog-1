@@ -5,7 +5,6 @@ date: 2016/7/31
 tags:
 - Unity
 updated: 2016/9/28
-thumbnail: /images/teaser/CodeGeass.png
 ---
 
 之前由于项目需要，我比较了下Unity常见的几个lua解决方案；最近应鑫哥约稿，整理了一下。

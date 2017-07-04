@@ -4,7 +4,6 @@ title: Skynet in Windows
 date: 2016/12/29
 tags:
 - C++
-thumbnail: /images/teaser/overwatch1.png
 ---
 
 最近的一个项目用了云风的[skynet](https://github.com/cloudwu/skynet)，之前是只有linux/osx版本，非官方版本有一个mingw。

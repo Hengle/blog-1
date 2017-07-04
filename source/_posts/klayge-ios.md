@@ -5,7 +5,6 @@ date: 2014/12/28
 tags:
 - KlayGE
 - C++
-thumbnail: /images/teaser/GuiltyCrown2.jpg
 ---
 
 这个帖子估计持续更新时间会很长...记录移植KlayGE到iOS中的坑ing~不少坑之前在{% post_link port-klayge %}的时候已经踩过了，这里就不再赘述。

@@ -5,7 +5,6 @@ date: 2016/12/1
 tags:
 - Android
 updated: 2017/5/6
-thumbnail: /images/teaser/overwatch2.png
 ---
 
 记录用...之前在{% post_link customized-adreno-profiler %}里修改过dll来修BUG...最近又捡起这个工具(我下的最新版本是4.0.5511.5192)，修了一个崩溃错误

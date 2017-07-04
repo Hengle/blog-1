@@ -4,7 +4,6 @@ title: cocos2d-x安卓视频OpenGL错误
 date: 2015/1/7
 tags:
 - cocos2d-x
-thumbnail: /images/teaser/Toradora.jpg
 ---
 
 这个其实是我很早之前遇到的一个问题，见[

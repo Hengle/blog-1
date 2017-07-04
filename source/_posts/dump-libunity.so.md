@@ -6,7 +6,6 @@ tags:
 - Unity
 - Android
 updated: 2016/11/8
-thumbnail: /images/teaser/AngelBeats1.jpg
 ---
 
 最近一直在和Crash做斗争，一开始用了Bugsnag相当不错，后来经朋友推荐转用腾讯的Bugly，后台查询简直6。
