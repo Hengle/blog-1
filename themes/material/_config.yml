@@ -200,6 +200,10 @@ materialcdn:
     use: 
     base: 
 
+mathjaxcdn: 
+    use: true
+    base: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0
+
 # Comment Systems
 # Available value of "use":
 #     disqus | disqus_click | changyan | 163gentie
