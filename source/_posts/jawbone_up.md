@@ -2,15 +2,16 @@
 layout: post
 title: JawBone UP 使用感想
 date: 2013/4/5
+toc: false
 ---
 
 一直想搞个腕带，一个月前盯着Fitbit Wireless, Nike FuelBand和JawBone UP，挑来挑去：
 
+<!--more-->
+
 - Fitbit比较帅，支持蓝牙，也不贵；但是没有现货
 - Nike FuelBand功能太少，性价比低
 - JawBone UP必须插插孔，而且没有安卓客户端
-
-<!--more-->
 
 网上也有一些[评测](http://www.getgrok.com/2013/01/a-comparative-review-28-days-with-the-fitbit-one-jawbone-up-nike-fuelband-and-bodymedia-link/)。但是某一天我突然发现JawBone的安卓客户端上架了，也支持四儿子，就入了一个
 
@@ -28,3 +29,4 @@ date: 2013/4/5
 
 我最喜欢的还是浅睡眠唤醒，以及45min自动提示运动的功能，比原来手机闹钟舒服不少~
 
+**Update** 用了半年充不进去电了，捉急...现在还是Apple Watch走起

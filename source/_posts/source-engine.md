@@ -7,11 +7,11 @@ thumbnail: /images/teaser/tanker_op_by_slim_charles-dany4nk.jpg
 
 最近闲来无事，研究了一下V社的资源格式，发现真是『开放』啊。
 
-从[Call of Duty Modern Warfare Remastered Models Release Thread](https://facepunch.com/showthread.php?t=1541193)下了几个模型练手，了解了下具体的格式，很多细节都可以从[Valve Developer Community](https://developer.valvesoftware.com/wiki/Main_Page)里找到。
-
 <!--more-->
 
-## 模型文件
+从[Call of Duty Modern Warfare Remastered Models Release Thread](https://facepunch.com/showthread.php?t=1541193)下了几个模型练手，了解了下具体的格式，很多细节都可以从[Valve Developer Community](https://developer.valvesoftware.com/wiki/Main_Page)里找到。
+
+# 模型文件
 
 [Studiomodel](https://developer.valvesoftware.com/wiki/Studiomodel)是Source引擎能直接加载的**处理过的**模型，包含以下信息
 
@@ -21,7 +21,7 @@ thumbnail: /images/teaser/tanker_op_by_slim_charles-dany4nk.jpg
 - phy 物理信息
 - ani 动画信息
 
-## 模型文件处理
+# 模型文件处理
 
 二进制格式的mdl是无法直接进行编辑的，可以考虑使用[Hooch's fixed version of MDL Decompiler](http://gamebanana.com/tools/5083)或其他工具处理得到文本格式的SMD和QC文件，然后使用[Blender Source Tools
 ](https://developer.valvesoftware.com/wiki/Blender_Source_Tools)导入到[Blender](https://www.blender.org/)中。
@@ -40,11 +40,11 @@ thumbnail: /images/teaser/tanker_op_by_slim_charles-dany4nk.jpg
 
 ![blender_source_useless_parts](/images/blender_source_useless_parts.png)
 
-## 贴图处理
+# 贴图处理
 
 Source使用了vtf格式来存储贴图，直接使用[VTFEdit](https://developer.valvesoftware.com/wiki/VTFEdit)批量倒tga出来就行了
 
-## 材质处理
+# 材质处理
 
 前面在处理mdl的时候会生成vmt文件
 

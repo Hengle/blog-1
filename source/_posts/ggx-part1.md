@@ -2,15 +2,15 @@
 layout: post
 title: Guilty Gear Xrd
 date: 2015/10/9
-tags:
-- Unity
+tags: Unity
+toc: false
 ---
 
 之前Trace翻译过[西川善司「实验做出的游戏图形」「GUILTY GEAR Xrd -SIGN-」中实现的「纯卡通动画的实时3D图形」的秘密](http://www.cnblogs.com/TracePlus/p/4205798.html)系列，后来问他要了份[Rip](http://www.cnblogs.com/TracePlus/p/4234431.html)，对照着在Unity里山寨了份。
 
-![ggx1](/images/ggx1.gif)
-
 <!--more-->
+
+![ggx1](/images/ggx1.gif)
 
 对照着翻译做下来的感觉基本就是Blinn Phong+Toon Shading，然后配合贴图控制参数。日本人关于“阴·影”的区别也挺有意思的。
 

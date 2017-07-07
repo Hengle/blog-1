@@ -2,9 +2,7 @@
 layout: post
 title: pomelo调试心得
 date: 2014/9/15
-tags:
-- JavaScript
-- pomelo
+tags: [JavaScript,pomelo]
 ---
 
 最近被pomelo的一个bug搞的心力憔悴，之前本地开发和阿里云环境上都是好好的，但是在另一套环境下时不时就挂。为了这个问题加起来折腾了好几天，今天终于算处理掉了(虽然还没从根子上解决)。写篇文章记录一下思路和解决方案。

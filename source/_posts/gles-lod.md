@@ -2,19 +2,17 @@
 layout: post
 title: GLES2/3下LOD问题
 date: 2016/11/28
-tags:
-- Unity
-- Android
-- OpenGL
+tags: [Unity,Android,OpenGL]
+toc: false
 ---
 
 上周有半天在调整shader fallback，主要测试了下`texCUBElod`和`tex2Dlod`在GLES 2/3下是否能正常表现。
 
+<!--more-->
+
 adreno profiler表明`UNITY_SAMPLE_TEXCUBE_LOD`在GLES3下会使用`textureLod`，在GLES2下回落到`textureCUBE`，没毛病~
 
 ![GLES3_PBR](/images/GLES3_PBR.png)
-
-<!--more-->
 
 ![GLES2_PBR](/images/GLES2_PBR.png)
 

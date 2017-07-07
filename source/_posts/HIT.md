@@ -2,18 +2,17 @@
 layout: post
 title: HIT图形分析
 date: 2016/12/2
-tags:
-- Unreal
+tags: Unreal
 thumbnail: /images/teaser/hit.png
 ---
 
 填坑向...之前和群里一个朋友讨论HIT的影子是咋实现的，后来验证了下发现自己之前想错了(逃。后来还看了下它的Bloom做法，效果还是挺好的。这里大力感谢@Hinatia和@LeLe给予的帮助和点拨，嘿嘿
 
+<!--more-->
+
 # 影子
 
 ![hit_shadow](/images/hit_shadow.jpg)
-
-<!--more-->
 
 这里讲真，一开始我把HIT的影子当成{% post_link unity-projector %}一样的做法，主要就是受到了这个图的“误导”。抓了下帧发现，一开始是只有角色绘制到一张depth texture
 

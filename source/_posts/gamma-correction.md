@@ -2,24 +2,22 @@
 layout: post
 title: Unreal/Unity中的Gamma校正
 date: 2014/12/24
-tags:
-- Unreal
-- Unity
+tags: [Unreal,Unity]
 ---
 
 之前桌子跟我讲了一个很冷的小知识：对于3D美术来说，做贴图的时候如果想要做50%灰，应该用186/255而不是127/255。这个很有意思，稍微想了下应该是和Gamma校正有关，然后算了下确实是这样的。后来我分别在Unreal里和Unity里试了下，谨以此文记录。
 
-## 名词解释
+<!--more-->
+
+# 名词解释
 
 具体Gamma Correction(伽马校正/Gamma校正)相关内容可以参看klayge上的[gamma的传说](http://www.klayge.org/2011/02/26/gamma%E7%9A%84%E4%BC%A0%E8%AF%B4/)一文。如果把颜色亮度理解为能量的话，输入和输出中是非线性的对应关系，对应下图中的红线；但是计算的时候必须使用线性对应才对，对应绿线：
 
 ![gamma_lines](/images/gamma_lines.png)
 
-<!--more-->
-
 具体的转换公式就是2.2了~如此就能理解为什么50%灰度是186: `pow(0.5, 1.0/2.2)*255`，这样才保证转换到线性空间后是0.5。
 
-## Unreal
+# Unreal
 
 我分别做了127/255和186/255灰度图，导入到材质编辑器作为底色，即下表前两张
 
@@ -37,7 +35,7 @@ tags:
 
 ![gamma_unreal](/images/gamma_unreal2.png)
 
-## Unity
+# Unity
 
 Unity文档里有一页叫[Linear Lighting](http://docs.unity3d.com/Manual/LinearLighting.html)对此进行了介绍：
 

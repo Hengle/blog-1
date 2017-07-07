@@ -6,15 +6,15 @@ tags:
 - JavaScript
 ---
 
-昨儿有人给我发了一个[神秘网址](https://dl.dropboxusercontent.com/u/76187276/test.html)，表示希望能获得资源<del>拿去lu</del>
+昨儿有人给我发了一个[神秘网址](https://dl.dropboxusercontent.com/u/76187276/test.html)，表示希望能获得资源<del>施法</del>
+
+<!--more-->
 
 ![blend4web1](/images/blend4web1.png)
 
 我看了下这个网页，是用[blend4web](https://github.com/TriumphLLC/Blend4Web)转的，这个可以将blender里的模型很方便的通过WebGL输出到网页上(新技能GET)...所以稍微花了点时间研究了下，如何导出blend4web网页中的模型资源~
 
-<!--more-->
-
-### 抓取文件内容
+# 抓取文件内容
 
 第一步当然是找一下资源文件在哪里~用chrome的inspector network面板发现没有其他请求，然后查看了一下源代码，好大的页面……很容易就找到了看起来像是乱码的资源
 
@@ -26,7 +26,7 @@ tags:
 
 这样一步步就把这几个文件都单独保存出来了。
 
-### 解析编码
+# 解析编码
 
 对于`main.json`和`main_file`来说，明文一看即知。对于另外几个文件，也很容易看出来其实是base64编码，写了个小脚本转出来：
 
@@ -41,7 +41,7 @@ fs.writeFileSync('Joc_ML_Cap10_baseTexBaked2.dds',c2.toString('binary'),{"encodi
 
 ![blend4web dds](/images/blend4web_dds.png)
 
-### 解析模型
+# 解析模型
 
 最后就剩下一个main.bin文件，用脚趾头想都知道是模型。将其转码之后，我一开始尝试了直接修改后缀名、用blender打开失败，猜测用了某种奇怪的格式。分析了下对应的main.json发现有这么一段
 

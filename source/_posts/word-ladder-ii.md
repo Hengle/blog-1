@@ -2,19 +2,17 @@
 layout: post
 title: word ladder 2
 date: 2013/11/5
-tags:
-- C++
-- Java
+tags: [C++,Java]
+toc: false
 ---
 
 I was blocked by [word ladder II](http://oj.leetcode.com/problems/word-ladder-ii/) in last two days. 
 
-I solve this problem with BFS building search graph + DFS build paths. However I tried my best optimizing but got Time Limit Exceeded (I've tried three ways of building path". After profiling, it seems in the building path part, copying ArrayList consumes too much time.
-
 <!--more-->
 
-{% codeblock lang:java %}
+I solve this problem with BFS building search graph + DFS build paths. However I tried my best optimizing but got Time Limit Exceeded (I've tried three ways of building path". After profiling, it seems in the building path part, copying ArrayList consumes too much time.
 
+{% codeblock lang:java %}
 public class Solution {
     public ArrayList<ArrayList<String>> buildPath(HashMap<String, ArrayList<ArrayList<String>>> cache, HashMap<String, ArrayList<String>> previous, String current, int steps){
         ArrayList<ArrayList<String>> c = cache.get(current);
@@ -114,7 +112,6 @@ public class Solution {
 After that I simply "translate" the code into C++ with stl, and got AC easily.
 
 {% codeblock lang:cpp %}
-
 class Solution {
 public:
 	void buildPath(unordered_map<string, vector<string>> &previous, vector<vector<string>> &result,
@@ -178,5 +175,4 @@ public:
 		return result;
     }
 };
-
 {% endcodeblock %}

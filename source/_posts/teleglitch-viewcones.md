@@ -2,18 +2,15 @@
 layout: post
 title: Teleglitch 动态视锥
 date: 2016/4/9
-tags:
-- GameArtTricks
-- Translation
+tags: [GameArtTricks,Translation]
+toc: false
 ---
-
-[原文链接](http://simonschreibt.de/gat/teleglitch-viewcones)
 
 [Nox](http://en.wikipedia.org/wiki/Nox_%28video_game%29)有一个很有意思的特性: 动态视锥(view cones)!当玩家移动的时候，可见区域会动态更新，很吸引眼球~
 
-![nox](/images/gamearttricks/nox.gif)
-
 <!--more-->
+
+![nox](/images/gamearttricks/nox.gif)
 
 独立游戏[Teleglitch](http://teleglitch.com/)中也有类似的效果，开发者用一种有趣的方式模拟出了这种动态视野的效果(译注: 就是用黑色盖住看不到的地方...)。一开始我想的是『看来他们也做了类似Nox的效果』，但后来我注意到这两者还是有所不同的。
 
@@ -48,3 +45,5 @@ tags:
 翻译这篇文章的时候，我第一是想到了[视线和光线：如何创建 2D 视觉范围效果](http://indienova.com/indie-game-development/sight-light-how-to-create-2d-visibility-shadow-effects-for-your-game/)这篇文章，利用采样Ray的方法来做。不过我把原文发给Simon看了下，他表示不能确定...开发者没有细说。
 
 就我自己的理解来说，如果用真3D方法做视锥，需要光栅化那一套比较麻烦~对2D游戏来说，用这种取巧的方法做个七七八八即可(恩还有特色...)~
+
+[原文链接](http://simonschreibt.de/gat/teleglitch-viewcones)

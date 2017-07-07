@@ -2,16 +2,16 @@
 layout: post
 title: Adreno Profiler再次修改
 date: 2016/12/1
-tags:
-- Android
+tags: Android
 updated: 2017/5/6
+toc: false
 ---
 
 记录用...之前在{% post_link customized-adreno-profiler %}里修改过dll来修BUG...最近又捡起这个工具(我下的最新版本是4.0.5511.5192)，修了一个崩溃错误
 
-ps. 虽然官方已经废弃Adreno，但是我觉得比SnapDragon好用啊啊啊
-
 <!--more-->
+
+ps. 虽然官方已经废弃Adreno，但是我觉得比SnapDragon好用啊啊啊
 
 这次就不用非常蛋疼的反汇编出整个VS工程，直接用{% post_link reflexil %}里的方法精确修改函数就行啦～ 注释了三段代码搞定
 

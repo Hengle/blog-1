@@ -2,19 +2,16 @@
 layout: post
 title: 辐射3 边缘处理
 date: 2016/4/2
-tags:
-- GameArtTricks
-- Translation
+tags: [GameArtTricks,Translation]
 thumbnail: /images/gamearttricks/fallout3_teaser.jpg
+toc: false
 ---
 
 前言：[Game Art Tricks](https://simonschreibt.de/game-art-tricks/)是我在知乎上看到某个回答里提到的一个网站，里面分析了很多游戏用到的精彩技巧。原谅我见识少...反正很多美术技巧我是第一次学到，简直6的飞起~我与原作者Simon联系之后，得到了翻译授权，之后我慢慢会将这个系列翻译出来。为了避免出现潜在问题，第一次遇到术语时我会注上对应英文单词。对于原文中提到的一些其他文章，我也会挑选性的翻译一些，减少阅读难度。
 
-[原文链接](http://simonschreibt.de/gat/fallout-3-edges)
+<!--more-->
 
 辐射3中有不少图形上做的非常棒的地方，其中一个让我惊艳到的细节是辐射3是如何处理磨损的边缘。
-
-<!--more-->
 
 如下图所示，你可以在最上面一行看到一个非常漂亮的破损岩石。我觉得这个效果非常赞，感觉上是高模(high poly)做的。但是当你从另一个角度观察，会发现其实石头模型用的面非常少(见中间一行)。
 
@@ -46,7 +43,7 @@ thumbnail: /images/gamearttricks/fallout3_teaser.jpg
 
 **最后补充：我问了如何在贴花之间混合，辐射只是删除了LoD上的贴花面。机智！**(译注：其实就是不管地形本身用的细节多少，最后都混合上同一层细节最多的贴花即可...)
 
-### (原文作者)更新1
+# (原文作者)更新1
 
 我问了下同事Markus有没有工具能够拿来分析，他向我推荐了Intel GPA。下图是我用这个工具的截图：
 
@@ -54,16 +51,18 @@ thumbnail: /images/gamearttricks/fallout3_teaser.jpg
 
 需要注意的是我并没有画贴图上的黑色部分。我只是关闭了Alphatest/Alpha1，这也许是因为辐射利用了额外模型才导致的。(译注：这时候贴花就无法和石头进行透明混合，而是全部盖住了)
 
-### Parallax Mapped Bullet Holes
+# Parallax Mapped Bullet Holes
 
 贴花是直接将一张二维图片贴到三维模型上，如果需要表现孔这样的形状就很容易穿帮。为了解决这个问题，一方面需要法线贴图，在光照上产生3D感；另一方面需要一张额外的**深度图**，这样在贴上贴花的时候能有一些扰动，更加真实。
 
 举个简单栗子，一张桌布平铺在桌面上的效果，和铺在有孔的桌面上的效果肯定是不同的；在孔的范围内，桌布会有一定的“延展拉伸”，相当于贴图产生了一定的形变。如果依然是和原来一样平铺开来，就算有法线贴图产生的光照变化，依然会让人觉得有瑕疵。
 
-### Using Decals for Destroyed Structures
+# Using Decals for Destroyed Structures
 
 原文作者的链接需要登录才能打开，我找了个[还是中文版本的](http://docs.cryengine.com/display/SDKDOC2/Using+Decals+for+Destroyed+Structures)...
 
 文章主要就是介绍了透明混合的贴花，做法是在原来的模型上复制出一部分几何模型，然后指定好对应的贴花和法线贴图(只用贴花的话，光照效果是不对的)，最后在边缘处和原模型透明混合即可。
 
 ![ce-decals-destroyed-structures](/images/gamearttricks/ce-decals-destroyed-structures.jpg)
+
+[原文链接](http://simonschreibt.de/gat/fallout-3-edges)

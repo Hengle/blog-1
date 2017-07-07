@@ -2,20 +2,17 @@
 layout: post
 title: Android下利用Hook实现mono dll加密
 date: 2016/11/12
-tags:
-- Unity
-- Android
+tags: [Unity,Android]
 updated: 2016/11/21
 thumbnail: /images/teaser/cydiasubstrate.png
+toc: false
 ---
 
 Unity的代码加密是一个有点麻烦的事情，相对iOS的IL2CPP，安卓里直接存放的dll很容易被ILSpy这种工具打开。网上有一些资料，如[Unity3D研究院之Android加密DLL与破解DLL .SO](http://www.xuanyusong.com/archives/3553)，常见的思路都是修改mono源代码后重新编译；但是这样有一个麻烦的地方在于每次升级Unity版本之后都需要重新编译对应版本的libmono.so出来...
 
-后来Unite 2016的时候和朋友聊天，学到了一个新思路——直接用Hook的方式来解密，这样就可以直接使用Unity自带的libmono.so解决问题～
-
 <!--more-->
 
-具体一点，我使用了[Cydia Substrate](http://www.cydiasubstrate.com/)的API来劫持mono API
+后来Unite 2016的时候和朋友聊天，学到了一个新思路——直接用Hook的方式来解密，这样就可以直接使用Unity自带的libmono.so解决问题～具体一点，使用了[Cydia Substrate](http://www.cydiasubstrate.com/)的API来劫持mono API
 
 {% codeblock lang:cpp %}
 MSImageRef image = MSGetImageByName(/* libmono.so */);

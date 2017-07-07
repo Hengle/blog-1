@@ -2,16 +2,16 @@
 layout: post
 title: Polygon mode sprites
 date: 2016/3/5
-tags:
-- Unity
+tags: Unity
 updated: 2016/3/7
+toc: false
 ---
 
 这也是最近在做的另一个优化：如何在有限的图中压缩更多的Sprites。最近的Unity和Texture Packer都导入了一个新的特性 Polygon Mode，也就是说将原来的矩形Sprite用更加紧致的Polygon来描述，从而能更有效的利用空白空间，如下图中的胜利标志(红线圈出部分)：
 
-![polygon_mode_sprites](/images/polygon_mode_sprites.png)
-
 <!--more-->
+
+![polygon_mode_sprites](/images/polygon_mode_sprites.png)
 
 当然，目前Unity只在Sprite Render里支持了这个模式，在UGUI的Image中还无法正常使用。官方论坛其实也有提到这个[THE 5.3 "POLYGON SPRITE MODE" SHOULD BE UTILIZED BY THE UI "IMAGE" COMPONENT.](https://feedback.unity3d.com/suggestions/the-5-dot-3-polygon-sprite-mode-should-be-utilized-by-the-ui-image-component)，但是还没有反馈~
 
@@ -37,7 +37,7 @@ ps. Super Cell的游戏貌似都是这种用法，贴图非常的紧致，当时
 
 注2: UGUI 5.1里要求Image部分的顶点都是Quad，我就用了一个退化成三角形的来做了... Unity 4.x版本不支持Polygon，所以就不管了。
 
-{% codeblock lang:c# %}
+{% codeblock lang:csharp %}
 using System.Collections.Generic;
 
 namespace UnityEngine.UI

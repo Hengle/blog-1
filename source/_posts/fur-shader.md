@@ -2,16 +2,16 @@
 layout: post
 title: Fur Shader
 date: 2014/11/15
-tags:
-- Unity
+tags: Unity
 updated: 2014/11/16
+toc: false
 ---
 
 花时间看了下毛发效果，苦于囊中羞涩没能买[QuickFur](https://www.assetstore.unity3d.com/#!/content/11866)、[furFX](https://www.assetstore.unity3d.com/en/#!/content/9201)等插件，最后找到了[Fur Shader](http://forum.unity3d.com/threads/fur-shader.4581/)学习了一下。
 
-![furshader1](/images/furshader1.png)
-
 <!--more-->
+
+![furshader1](/images/furshader1.png)
 
 这个代码一开始貌似是Unity 3.x版本的，我稍微改了几个地方，不然在Android上是黑的：
 

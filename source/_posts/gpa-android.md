@@ -2,12 +2,13 @@
 layout: post
 title: Graphics Performance Analyzer 安卓
 date: 2017/1/8
-tags:
-- Android
-- OpenGL
+tags: [Android,OpenGL]
+toc: false
 ---
 
 最近倒腾了很久新的抓包工具：
+
+<!--more-->
 
 - Mali手头没设备一直没用过
 - {% post_link Adreno-Profiler %}之前分享过了，但是多线程发现很不好用
@@ -16,8 +17,6 @@ tags:
 最近倒腾了下Intel GPA发现好用
 
 ![intel_gpa_android_1](/images/intel_gpa_android_1.jpg)
-
-<!--more-->
 
 ![intel_gpa_android_2](/images/intel_gpa_android_2.png)
 

@@ -2,17 +2,17 @@
 layout: post
 title: 山寨SSSSS
 date: 2015/1/10
-tags:
-- Unity
+tags: Unity
+toc: false
 ---
 
 主要参考了[KlayGE里的SSSSS实现](http://www.klayge.org/2013/12/24/klayge-4-4%E4%B8%AD%E6%B8%B2%E6%9F%93%E7%9A%84%E6%94%B9%E8%BF%9B%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9Asssss/)，在Unity里山寨了一下:
 
+<!--more-->
+
 | SSSSS打开 | SSSSS关闭 |
 |----------------------------------------------------------|----------------------------------------------------------------------------|
 | ![unity_sssss_on](/images/unity_sssss_on.png) | ![unity_sssss_off](/images/unity_sssss_off.png) |
-
-<!--more-->
 
 然后不得不吐槽u3d的API太少了，怎么优化都不给力...
 

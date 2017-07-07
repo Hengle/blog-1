@@ -2,8 +2,7 @@
 layout: post
 title: Unity UV/2UV相关的一系列坑
 date: 2015/11/15
-tags:
-- Unity
+tags: Unity
 ---
 
 昨天和美术折腾了一天，好好的理解了一下Unity里UV/2UV的设置，主要是理解很多程序的概念在美术上的理解是怎么一回事儿...

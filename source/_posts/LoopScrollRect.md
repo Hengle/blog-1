@@ -2,16 +2,15 @@
 layout: post
 title: 优化UGUI的ScrollRect
 date: 2015/8/15
-tags:
-- Unity
+tags: Unity
 updated: 2016/10/31
 ---
 
 最近忙于性能优化，深切体会到二八法则真是指导高(tou)效(lan)工作的有力武器。这个礼拜花了几天解决了一个实际问题：UGUI的ScrollRect加载太多物体的时候，第一次弹出界面会非常卡顿，而且不在界面里的内容依然会参与绘制(毫无意义的浪费...)。
 
-![demo1](/images/LoopScrollRect/demo1.gif)
-
 <!--more-->
+
+![demo1](/images/LoopScrollRect/demo1.gif)
 
 **ChangeLog**
 
@@ -30,7 +29,7 @@ updated: 2016/10/31
 
 ![demo3](/images/LoopScrollRect/demo3.gif)
 
-## 介绍
+# 介绍
 
 最原始版本的代码是@ivomarel的[InfinityScroll](https://github.com/ivomarel/InfinityScroll)。我改到后来，基本和原始版没啥相同的了...
 
@@ -50,7 +49,7 @@ updated: 2016/10/31
 
 和UGUI自带的`ScrollRect`有所不同，我拆分出了`LoopHorizontalScrollRect`和`LoopVerticalScrollRect`两个类，分别代表水平滚动条和水平滚动条。下面我们以`LoopVerticalScrollRect`为例，水平版本类似。
 
-### 判定cell大小
+## 判定cell大小
 
 `LoopScrollRect`要解决的核心问题是：如何计算每个元素的大小。这里我使用了`Content Size Fitter`配合`Layout Element`来控制每个cell的长宽，因此对于`GridLayout`直接取高度，否则取`Preferred Height`。需要注意的是，除了元素本身的大小之外，我们还要将`padding`考虑进去。
 
@@ -72,7 +71,7 @@ protected override float GetSize(RectTransform item)
 
 这个其实也是最核心的一个地方：在能够准确计算格子大小的基础上，后续工作就好实现了。
 
-### 如何优雅的增删元素
+## 如何优雅的增删元素
 
 对于每个`ScrollRect`，其实只需要考虑在头部和尾部是否需要增加或者删除元素。在这里以头部的各种情况为例进行解释，因为在正向滑动情况下，必须保证在修改元素之后整个`ScrollRect`内容显示一致不跳变；这些情况比尾部处理会麻烦一些。
 
@@ -110,7 +109,7 @@ protected float DeleteItemAtStart()
 }
 {% endcodeblock %}
 
-### 何时需要增删元素
+## 何时需要增删元素
 
 这里需要有两个概念`viewBounds`和`contentBounds`：前者是指`ScrollRect`本身的大小，一般也对应Mask；后者是指`ScrollRect`里所有cell组成的内容部分的大小。在这个基础上就简单了：如果`contentBounds`的最上面比`viewBounds`的最上面要低，那么尝试在顶部增加元素；如果`contentBounds`的最上面比`viewBounds`的最上面高很多，那么尝试删除元素。
 
@@ -139,7 +138,7 @@ protected override bool UpdateItems(Bounds viewBounds, Bounds contentBounds)
 }
 {% endcodeblock %}
 
-### 对象池交互
+## 对象池交互
 
 在新建cell和销毁cell的时候，使用对象池来避免内存碎片；同时这里使用了`SendMessage`来向每个cell发送必须的信息，保证数据的正确性。
 
@@ -165,11 +164,11 @@ private RectTransform InstantiateNextItem(int itemIdx)
 }
 {% endcodeblock %}
 
-### 滚动条相关
+## 滚动条相关
 
 这块我其实是估算的，根据当前的长度和当前元素个数/总个数按照比例缩放，这个在所有cell大小一致的情况下是没有问题的；但是如果大小不一致我就无法得到精确结果，所以会产生一定抖动。我暂时没有更好办法，因为得到的信息就是不够用...
 
-### 其他细节
+## 其他细节
 
 我主要遇到了两个坑：
 
@@ -200,10 +199,10 @@ private RectTransform InstantiateNextItem(int itemIdx)
 
 如果是正向滑动，就设置pivot为1；否则设为0并打开ReverseDirection。我强烈建议你试试在播放状态下试试看修改这些参数。
 
-## 无尽模式
+# 无尽模式
 
 如果需要无限滚动模式，将`totalCount`设为负数即可。
 
-## 他人工作
+# 他人工作
 
 后来搜了下，发现网上也有人提到过[UGUI ScrollRect 优化](http://blog.csdn.net/subsystemp/article/details/46912479)，不过他的策略是监听ScrollRect的value，然后禁用范围外的cell。最后作者也提到改成动态加载策略。这种基于value的做法我不太确认在在滚动前动态添加新元素的时候是否会出现问题。

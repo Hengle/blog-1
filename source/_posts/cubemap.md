@@ -2,15 +2,14 @@
 layout: post
 title: unity中cubemap使用的一些想法
 date: 2014/11/8
-tags:
-- Unity
+tags: Unity
 ---
 
 一般在渲染中，是使用cubemap来预计算环境反射，但是怎么玩好这个东西，我之前并没有考虑太多。最近和桌子讨论了挺多环境贴图的使用方式，在这里记录一下想法(偷懒起见，示意代码都是surface shader)。
 
 <!--more-->
 
-### too young too naive
+# too young too naive
 
 最简单的利用当然是直接根据反射方向采样：
 
@@ -21,7 +20,7 @@ float3 environment = texCUBE(cube, IN.worldRefl)
 这里其实是假设cubemap是记录了无穷远的内容，反射的时候直接根据世界坐标系中反射方向直接采样即可。
 ps. 这个其实就是skybox~
 
-### Image Based Lighting
+# Image Based Lighting
 
 如果我们只考虑采集一个小范围的环境贴图，例如一个屋子里，那么用前面所提到的方法就会有瑕疵：参考GPU Gems Chap.19 [Image-Based Lighting](http://http.developer.nvidia.com/GPUGems/gpugems_ch19.html)的例子，当物体移动但法向不变时，其实我们是希望看到反射部分产生变化，这样才能更加真实。
 
@@ -34,7 +33,7 @@ ps. 这个其实就是skybox~
 
 ps. 桌子跟我提到这个，是因为unreal里的采集器出来的效果就自带了，不过我之前读了UE4的shader没有找到相关代码，也许是CPU部分计算的？不过它的效果的边缘情况处理比我好很多，而且有box形状的。具体等以后有心情再研究研究。
 
-### Fuck Your Brain
+# Fuck Your Brain
 
 上一块提到的方法总体来说已经能够使用了，但是运算量有点大，所以桌子提出了一种脑洞大开方法：直接把cubemap里要画的物体直接贴在plane上，倒贴物体下方。。。然后绘制的过程就直接先画一遍物体本身、然后再画一遍低膜版本的倒置物体、将反射的颜色blend上去。也就是说完全不用后计算真实地cubemap采样方向，而是直接绘制对应的“倒影”物体。
 

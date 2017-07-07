@@ -2,25 +2,22 @@
 layout: post
 title: Compile libcurl 7.37.0 with Android 4.4 or other versions
 date: 2014/8/31
-tags:
-- C++
-- cocos2d-x
-- Android
+tags: [C++,cocos2d-x,Android]
 ---
 
 Recently I need compile libcurl for different platforms, since cocos-2dx 3.0 ships with libcurl 7.26.0 and there are several fixes in newer versions according to [changelog](http://curl.haxx.se/changes.html). There are several blogs describing how to build libcurl with android source, such as [porting-of-libcurl-to-android-os-using](http://thesoftwarerogue.blogspot.com/2010/05/porting-of-libcurl-to-android-os-using.html), [How_to_compile_libcurl](http://www.cocos2d-x.org/wiki/How_to_compile_libcurl) and [Android ndk下编译libcurl](http://blog.csdn.net/ly131420/article/details/9177063). However, they are all out dated, especially android source has changed a lot!
 
-After struggling a whole weekend, I finally compiled libcurl 7.37.0 with android 4.4 source. The steps described in `packages/Android/Android.mk` skip many details. I'll explain every steps and hope you can make it. If you use the similar version, you could just copy & paste mine.
-
 <!--more-->
 
-## Build Environment (Android 4.4)
+After struggling a whole weekend, I finally compiled libcurl 7.37.0 with android 4.4 source. The steps described in `packages/Android/Android.mk` skip many details. I'll explain every steps and hope you can make it. If you use the similar version, you could just copy & paste mine.
+
+# Build Environment (Android 4.4)
 
 Follow instructions in [Download and Building](https://source.android.com/source/building.html) and build android first. If you encounter connecting problems in China, you may refer to {% post_link android-GFW %}. My android source folder is put at `/home/anthony/android`.
 
 ![android](/images/android.jpg)
 
-## Generate LIBS
+# Generate LIBS
 
 In order to determine which libs are needed, we first make an execuable library to see arguments passed in. Run `make dhcpcd showcommands` at `/home/anthony/android`, and we will get this in terminal output:
 
@@ -30,14 +27,14 @@ prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8/bin/arm-linux-androideabi-
 
 This indicates the link step and we can find libraries like `-lc -lcutils -lm -lnetutils -lstdc++` and `libatomic.a libgcc.a crtbegin_dynamic.o crtend_android.o`. 
 
-## Put libcurl into android source
+# Put libcurl into android source
 
 Extract libcurl into `android/external` and rename it from curl-7.37.0 to curl. Now we need to fix two places in `packages/Android/Android.mk`:
 
 - Add in line 73: `LOCAL_C_INCLUDES += $(LOCAL_PATH)/include/ $(LOCAL_PATH)/lib/`
 - Comment line 86: `#ALL_PREBUILT += $(LOCAL_PATH)/NOTICE`
 
-## Generate CPPFLAGS and CFLAGS
+# Generate CPPFLAGS and CFLAGS
 
 Similar to the previous step, run `make libcurl showcommands` at `/home/anthony/android` and we will fail with the following output (Remember we haven't `./configure` yet):
 
@@ -48,7 +45,7 @@ prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8/bin/arm-linux-androideabi-
 
 We should copy `-I -isystem` and flags like `-W -D -M` into the following step.
 
-## Build.sh
+# Build.sh
 
 Now we have enough parameters needed to pass in, so we can write a script called `build.sh`. Follow Dan Fandrich's instructions: putting the -I, -isystem and -D options into CPPFLAGS, putting the -W, -m, -f, -O and -nostdlib options into CFLAGS, and putting the -Wl, -L and -l options into LIBS, along with the path to the files libgcc.a, crtbegin_dynamic.o, and ccrtend_android.o. Remember that the paths must be absolute since you will not be running configure from the same directory as the Android make.  The normal cross-compiler options must also be set. Note that the -c, -o, -MD and similar flags must not be set.
 
@@ -66,19 +63,19 @@ LIBS="$ANDROID_ROOT/out/target/product/generic/obj/lib/crtbegin_dynamic.o $ANDRO
 ./configure CC=arm-linux-androideabi-gcc --host=arm-linux-androideabi --host=arm-eabi --disable-shared --disable-tftp --disable-sspi --disable-ipv6 --disable-ldaps --disable-ldap --disable-telnet --disable-pop3 --disable-ftp --without-ssl --disable-imap --disable-smtp --disable-pop3 --disable-rtsp --disable-ares --without-ca-bundle --disable-warnings --disable-manual --without-nss --enable-shared --without-zlib --without-random
 {% endcodeblock %}
 
-## Configure and Make
+# Configure and Make
 
 Run the script to configure by `./build.sh` and `make libcurl` from android source root. You will find what you want in `out/target/product/generic/obj`:
 
 ![android](/images/libcurl_android.jpg)
 
-## Downgrade to lower Android version
+# Downgrade to lower Android version
 
 If you wish to compile with lower version, the first thing you need is `repo init -b xxx` and `repo sync` to get a different android source.
 
 **Attention: you should use the corresponding APP_PLATFORM in NDK when building apps, and don't forget android:minSdkVersion!**
 
-### Android 4.3
+## Android 4.3
 
 {% codeblock lang:bash %}
 #!/bin/sh
@@ -92,7 +89,7 @@ LIBS="$ANDROID_ROOT/out/target/product/generic/obj/lib/crtbegin_dynamic.o $ANDRO
 ./configure CC=arm-linux-androideabi-gcc --host=arm-linux-androideabi --host=arm-eabi --disable-shared --disable-tftp --disable-sspi --disable-ipv6 --disable-ldaps --disable-ldap --disable-telnet --disable-pop3 --disable-ftp --without-ssl --disable-imap --disable-smtp --disable-pop3 --disable-rtsp --disable-ares --without-ca-bundle --disable-warnings --disable-manual --without-nss --enable-shared --without-zlib --without-random
 {% endcodeblock %}
 
-### Android 2.3.3
+## Android 2.3.3
 
 You may need [downgrade your gcc](http://stackoverflow.com/questions/13365348/is-it-possible-to-build-aosp-project-gingerbread-in-kubuntu12-04-xubuntu) and do as the above. 
 

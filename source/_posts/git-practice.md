@@ -2,13 +2,14 @@
 layout: post
 title: 奇怪的Git实践
 date: 2017/3/2
+toc: false
 ---
 
 最近在做一些奇怪的事情...主要是老项目太大导致sourcetree卡，想了想用一个鸡贼的方法就是直接归档历史然后另起一个新项目。
 
-首先尝试直接复制项目出来，发现不行...主要是submodule信息丢了～然后网上找了一个很鸡贼的方法：
-
 <!--more-->
+
+首先尝试直接复制项目出来，发现不行...主要是submodule信息丢了～然后网上找了一个很鸡贼的方法：
 
 说穿了比较简单，先找到历史上第一个commit然后soft reset过去，最后amend last commit覆盖到第一个commit即可
 

@@ -2,15 +2,15 @@
 layout: post
 title: 从任意图片生成NormalMap
 date: 2015/8/24
-tags:
-- Unity
+tags: Unity
+toc: false
 ---
 
 之前有人给我发了一个[NormalMap-Online](http://cpetry.github.io/NormalMap-Online/)，在线从任意图片生成法线纹理。这个功能还是挺常见的，专业工具如[CrazyBump](http://www.crazybump.com/)，或者Unity之类的引擎都自带。不过既然有Javascript版本，就可以看看到底是怎么实现的，然后用C++实现了下。
 
-![NormalMapGenerate](/images/NormalMapGenerate.png)
-
 <!--more-->
+
+![NormalMapGenerate](/images/NormalMapGenerate.png)
 
 核心思路非常简单粗暴：
 

@@ -2,17 +2,16 @@
 layout: post
 title: C#反射——掀起Unity Editor面纱
 date: 2017/3/20
-tags:
-- Unity
+tags: Unity
 thumbnail: /images/teaser/skirt.jpg
+toc: false
 ---
 
-之前在群里看到有人提到[
-Profiler Memory Plus](https://www.assetstore.unity3d.com/en/#!/content/28888)这个插件，相当不错～在原来Profiler功能上扩展出了diff功能 非常实用。
-
-然后我就在想这个是怎么做的呢，某天在折腾shader keyword的时候突然灵光一闪，莫非是private API搞的? 动手试了下果然可行。
+之前在群里看到有人提到[Profiler Memory Plus](https://www.assetstore.unity3d.com/en/#!/content/28888)这个插件，相当不错～在原来Profiler功能上扩展出了diff功能 非常实用。
 
 <!--more-->
+
+然后我就在想这个是怎么做的呢，某天在折腾shader keyword的时候突然灵光一闪，莫非是private API搞的? 动手试了下果然可行。
 
 具体解释一下：Unity引擎底层是用C++写的，但是外围逻辑绝大部分都是C#实现，包括Editor本身。平常我们常见的UnityEngine.dll和UnityEditor.dll里就有大量的宝藏值得挖掘，网上已经有提供了一份[UnityDecompiled](https://github.com/MattRix/UnityDecompiled)(当然也可以自己用ILSpy等工具处理)。我个人觉得可以分为两类: 
 

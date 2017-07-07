@@ -2,16 +2,16 @@
 layout: post
 title: Customized Adreno Profiler
 date: 2015/9/2
-tags:
-- Android
+tags: Android
 updated: 2015/10/17
+toc: false
 ---
 
 Recently I found an interesting bug with Adreno Profiler: this cannot work correctly with `glVertexAttribPointer(indx=2, size=4, type=GL_HALF_FLOAT_OES, normalized=False, stride=32, ptr=0xC)`. For example, texcoords in **half** type are presented as strange numbers:
 
-![adreno_profiler_half_wrong](/images/adreno_profiler_half_wrong.png)
-
 <!--more-->
+
+![adreno_profiler_half_wrong](/images/adreno_profiler_half_wrong.png)
 
 I tried to seek help from [developers' forum](https://developer.qualcomm.com/forum/qdn-forums/software/adreno-gpu-profiler/29349) but got no response yet. After two days' part time work, I solved this bug by myself.
 

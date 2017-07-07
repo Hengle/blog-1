@@ -2,22 +2,20 @@
 layout: post
 title: HomeLight-安卓空壳版
 date: 2012/4/7
-tags:
-- Android
-- Java
+tags: [Android,Java]
 ---
 
-清明的时候gus找我做的一个安卓的UI，要拿去参赛-。-本质上是一个用手机控制家里的各种灯的开关、明暗、颜色等，需要一个过得去的界面。反正我只管搭空壳子。昨天晚上+今天早上突击搞了一下，发现android的各种view还是博大精深的，外加xml自定义各种强大。最后也算自我感觉不错，嗯~
+清明的时候Gus找我做的一个安卓的UI，要拿去参赛-。-本质上是一个用手机控制家里的各种灯的开关、明暗、颜色等，需要一个过得去的界面。反正我只管搭空壳子。昨天晚上+今天早上突击搞了一下，发现android的各种view还是博大精深的，外加xml自定义各种强大。最后也算自我感觉不错，嗯~
 
 <!--more-->
 
-###相对位置布局
+# 相对位置布局
 
 这个主要是解决不同手机分辨率不一样的情况，其实安卓本身也有9-patch这样的东西。下图是主界面，整体是一个RelativeLayout，上面置顶了一个RelativeLayout作为Head，下面置地了一个RelativeLayout作为Bottom，中间用一个match_parent的自定义ImageView画房型。在Head和Bottom上也分别用相对定位，在拿几个同学手机测试的时候都表现良好。
 
 ![homelight](/images/HomeLight_Main.png)
 
-###透明启动画面
+# 透明启动画面
 
 主要参考了这个教程[An Advanced Splash Screen for Android App](http://www.codeproject.com/Articles/113831/An-Advanced-Splash-Screen-for-Android-App)
 
@@ -34,7 +32,7 @@ tags:
 
 后来教程中还教了怎么做淡入淡出，都是用xml实现的，感觉真的好神奇(不过本质还是对应了函数)。具体参见Appera.xml和Disappear.xml
 
-###圆角按钮
+# 圆角按钮
 
 对应主界面上的Back和Edit，同样的是使用了xml作为样式
 
@@ -64,7 +62,7 @@ tags:
 
 比较遗憾的是只能控制四个角一样的圆弧，还没有找到在一侧实现一个"三角形"的方向箭头的效果。
 
-###Drawable ImageView
+# Drawable ImageView
 
 ![homelight2](/images/HomeLight_Main2.png)
 
@@ -80,7 +78,7 @@ public void onDraw(Canvas canvas) {
 
 触摸操作也是重载了ImageView的onTouchEvent方法。
 
-###ColorPicker Dialog
+# ColorPicker Dialog
 
 ![homelight color picker](/images/HomeLight_ColorPicker.png)
 

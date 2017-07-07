@@ -2,8 +2,7 @@
 layout: post
 title: Android 7升级须知
 date: 2016/11/14
-tags:
-- Android
+tags: Android
 thumbnail: /images/teaser/android7.png
 ---
 
@@ -11,7 +10,7 @@ thumbnail: /images/teaser/android7.png
 
 <!--more-->
 
-### NDK限制
+# NDK限制
 
 这个在{% post_link android-hook %}里提到了，新版本系统上如果targetSDK>23，在动态载入其他库时会直接崩溃；如果targetSDK<=23，目前是会报错但是暂时能使用。再之后的Android版本也是直接崩溃的。
 
@@ -22,7 +21,7 @@ thumbnail: /images/teaser/android7.png
 >   at java.lang.System.loadLibrary(System.java:1530)
 >   at com.gotye.api.GotyeAPI.loadLibrary(GotyeAPI.java:54)
 
-### Support Library
+# Support Library
 
 这也是一个让我损失惨重的坑...从24.2.0开始之后，原来的support-v4被拆分成了多个。[Support Library Revision History](https://developer.android.com/topic/libraries/support-library/revisions.html)里
 

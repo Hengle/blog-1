@@ -2,20 +2,19 @@
 layout: post
 title: Unity山寨PBR
 date: 2014/12/26
-tags:
-- Unreal
-- Unity
+tags: [Unreal,Unity]
 updated: 2015/8/14
+toc: false
 ---
 
 这个和我之前在贵易实习的内容相关，当时是参考了[SIGGRAPH 2013 Course](http://blog.selfshadow.com/publications/s2013-shading-course/)里的材料，主要是UE4和COD9两节；以及KlayGE博客上的系列介绍[游戏中基于物理的环境光渲染](http://www.klayge.org/2014/07/13/%E6%B8%B8%E6%88%8F%E4%B8%AD%E5%9F%BA%E4%BA%8E%E7%89%A9%E7%90%86%E7%9A%84%E7%8E%AF%E5%A2%83%E5%85%89%E6%B8%B2%E6%9F%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6/)。
+
+<!--more-->
 
 话说虽然Unity 5已经提供了PBR，而且还有Skyshop这种插件(见[unity3d 基于物理渲染的问题解决](http://www.cnblogs.com/TracePlus/p/4070974.html))；出于练手，我还是参考UE4在Unity 4.6里山寨了一发。做的时候需要打开线性空间、HDR和Tone Mapping，才能看得出效果~另外UE4里的ambient cubemap是用的hdr格式，而我在Unity里是转换到dds cubemap了，所以表现力下降了不少。
 
 粗糙度不变，金属度增大: 
 ![PBR_metallic](/images/PBR_metallic.png)
-
-<!--more-->
 
 金属度不变，粗糙度增大: 
 ![PBR_roughness](/images/PBR_roughness.png)

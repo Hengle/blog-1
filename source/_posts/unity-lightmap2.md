@@ -2,14 +2,15 @@
 layout: post
 title: Unity中光照贴图一二坑续
 date: 2016/3/15
-tags:
-- Unity
+tags: Unity
 updated: 2016/4/11
 ---
 
 之前写过一篇{% post_link unity-lightmap %}，最近帮朋友看了些与AssetBundle结合的时候发现了一个新的问题...依然坑的飞起
 
-## Case 1
+<!--more-->
+
+# Case 1
 
 | Simulation Mode | Asset Bundle |
 |--------------------------------------------------------------------------|----------------------------------------------------------------------------|
@@ -21,8 +22,6 @@ updated: 2016/4/11
 - Asset Bundle下载入打包出来的ab中的场景，显示错误
 
 利用Frame Debugger分析对比了两种情况：
-
-<!--more-->
 
 | Simulation Mode | Asset Bundle |
 |--------------------------------------------------------------------------|----------------------------------------------------------------------------|
@@ -40,11 +39,11 @@ updated: 2016/4/11
 
 ![unity_ab_lm_right_detail](/images/unity_ab_lm_right_detail.jpg)
 
-## Case 2
+# Case 2
 
 这是菜狗几个月前问我的一个问题，也是遇到了从Asset Bundle里载入的场景和原来不一致的情况。与Case 1不同的是，他的场景里不全是烘焙，所以载入之后一方面要利用API设置各种Lighting信息，最后记得
 
-{% codeblock lang:C# %}
+{% codeblock lang:csharp %}
 DynamicGI.UpdateEnvironment();
 {% endcodeblock %}
 
@@ -54,6 +53,6 @@ DynamicGI.UpdateEnvironment();
 
 <del>也许Unity想的是至少实时部分我复原了...</del>
 
-## update
+# TODO
 
 今天听一个老司机说，也许可以通过`StaticBatchingUtility.Combine`解决~这样生成的新的Mesh是带static flag的(待测试)

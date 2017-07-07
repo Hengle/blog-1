@@ -2,13 +2,11 @@
 layout: post
 title: unity的环境捕捉器
 date: 2014/11/8
-tags:
-- Unity
+tags: Unity
+toc: false
 ---
 
 一下午随手写了一个环境捕捉器，山寨了一下unreal的[scene capture cube](https://docs.unrealengine.com/latest/INT/Resources/ContentExamples/Reflections/1_6/index.html)。结果后来发现unity3d pro自带了一个[Camera.RenderToCubemap](http://docs.unity3d.com/ScriptReference/Camera.RenderToCubemap.html)函数真是哈哈哈哈啊……
-
-更新: unity 5.x 貌似直接提供一个反射捕捉器
 
 <!--more-->
 
@@ -25,3 +23,5 @@ tags:
 {% include_code CubemapCaptureEditor.cs lang:csharp CubemapCaptureEditor.cs %}
 
 {% include_code CubemapCaptureScript.cs lang:csharp CubemapCaptureScript.cs %}
+
+ps. unity 5.x 貌似直接提供一个反射捕捉器

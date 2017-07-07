@@ -4,6 +4,7 @@ title: SDF字体
 date: 2015/12/5
 tags : [Unity, KlayGE]
 thumbnail: /images/teaser/textmeshpro.png
+toc: false
 ---
 
 之前一段时间项目到了一个节点，忙于出包和应付渠道，没太多时间业余充电...最近空下来之后终于有空继续折腾KlayGE。这次是把字体部分kfont读了下，感受到了SDF(Signed Distance Field)的厉害之处。

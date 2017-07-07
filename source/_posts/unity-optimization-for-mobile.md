@@ -2,14 +2,11 @@
 layout: post
 title: Unite 2016 针对移动设备端的Unity应用优化
 date: 2016/4/11
-tags:
-- Unity
+tags: Unity
 thumbnail: /images/teaser/unite2016-optimize.jpg
 ---
 
-今天参加Unite 2016听下来最有收货的一个talk，虽然一半以上都是老生常谈...整理如下
-
-ps. 我个人觉得比较有价值的在于**资源审查**这一部分，关于各类资源的常用方法都提出了一些很有实用价值的建议和规范
+今天参加Unite 2016听下来最有收货的一个talk，虽然一半以上都是老生常谈...我个人觉得比较有价值的在于**资源审查**这一部分，关于各类资源的常用方法都提出了一些很有实用价值的建议和规范
 
 <!--more-->
 
@@ -142,7 +139,7 @@ Managed Memory: 堆(Heap)里包含了资源(Assets)和脚本(Scripts)里的东�
 
 当将值类型当做引用类型传入时，会在堆顶临时分配一个值来用
 
-{% codeblock lang:C# %}
+{% codeblock lang:csharp %}
 int x = 1;
 object y = new object();
 y.Equals(x);	// Boxes "x" onto the heap
@@ -159,7 +156,7 @@ y.Equals(x);	// Boxes "x" onto the heap
 
 这个错误代码药丸，每次都申请非常多的`Touch[]`数组
 
-{% codeblock lang:C# %}
+{% codeblock lang:csharp %}
 for(int i = 0; i < Input.touches.Length; i++)
 {
 	Touch touch = input.touches[i];
@@ -169,7 +166,7 @@ for(int i = 0; i < Input.touches.Length; i++)
 
 正确的代码就只有一份
 
-{% codeblock lang:C# %}
+{% codeblock lang:csharp %}
 Touch[] touches = Input.touches;
 for(int i = 0; i < touches.Length; i++)
 {
@@ -204,14 +201,14 @@ for(int i = 0; i < touches.Length; i++)
 
 错误做法
 
-{% codeblock lang:C# %}
+{% codeblock lang:csharp %}
 material.SetColor("_Color", Color.white);
 animator.SetTrigger("attack");
 {% endcodeblock %}
 
 正确做法是一开始启动的时候计算一次哈希，然后缓存下来...
 
-{% codeblock lang:C# %}
+{% codeblock lang:csharp %}
 static readonly int material_Color = Shader.PropertyToID("_Color");
 static readonly int anim_Attack = Animator.StringToHash("attack");
 

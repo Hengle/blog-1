@@ -2,33 +2,28 @@
 layout: post
 title: 使用GAE完成JS跨域中转
 date: 2012/3/29
-tags:
-- JavaScript
-- Java
+tags: [JavaScript,Java]
 ---
 
-###问题背景:解决JS跨域！
-
 Javascript跨域访问(Cross-Domain，主要可以看这个[same origin policy](http://en.wikipedia.org/wiki/Same_origin_policy))，一直是个很纠结加蛋疼的问题(擦话说我又想到当时做flex时也遇到了跨域问题)
+
+<!--more-->
 
 现有的解决方案其实也有不少：例如用iframe包装，HTML5页面间通信，jquery自带的JSONP技术等等。但如果说当跨域访问对象不是我们能控制的时候，就格外纠结了。因为如果A，B域的都能我们来控制，那么可以用iframe之类的方法进行交互，具体的就不详谈了，网上也一大把。下面具体看看只能控制一个域的跨域访问的解决。
 
 **咳咳，具体点说这个，就是我自己域上的js如何去访问[金山快盘的API接口](http://www.kuaipan.cn/developers/)。要记得我们是没有权限去修改kuaipan网站上的文件的Yooo~**
 
-<!--more-->
-
-###JSONP
+# JSONP
 
 这个在jQuery里已经实现了[JSON with padding](http://en.wikipedia.org/wiki/JSONP)：因为script标签是不受跨域限制的，所以将数据包装成JSON的格式，以函数的形式返回客户端，这样就完成了跳过跨域的限制。
 
 具体怎么实现的可以看下文。
 
-###Proxy方法
+# Proxy方法
 
 现在我看到的比较好的一个解决方案是[Cross-domain requests with jQuery](http://james.padolsey.com/javascript/cross-domain-requests-with-jquery/)中提到的思路，也就是通过第三方的服务来解决。这个思路说穿了就一句话：
 
 **既然我没有权限控制对方的域，那么我自己再实现一个域来封装它！**
-
 
 先来看下代码(作者覆盖了jQuery.ajax)
 
@@ -52,7 +47,7 @@ query = 'select * from html where url="{URL}" and xpath="*"';
 
 ok其实到这里就不用说了。本质就是调用Yahoo的服务器进行封装。
 
-###使用GAE作为Proxy
+# 使用GAE作为Proxy
 
 唔，从我自己的角度来说呢，总归觉得这样用对方的服务不靠谱，而且确实使用过程中有时候会遇到取回来的数据是空的情况：进程性的第一步requestToken正常，第三步accessToken的时候取不回来了。
 

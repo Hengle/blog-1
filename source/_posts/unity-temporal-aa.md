@@ -2,18 +2,15 @@
 layout: post
 title: Unity中Temporal AA
 date: 2015/2/25
-tags:
-- Unity
+tags: Unity
 ---
 
 这个东西是trace在群里提到的，然后我看了一些相关资源[Filtering Approaches for
-Real-Time Anti-Aliasing](http://iryoku.com/aacourse/)(很多sig course好棒好棒)、[High Quality Temporal Supersampling](https://de45xmedrsdbp.cloudfront.net/Resources/files/TemporalAA_small-59732822.pdf)、[CryENGINE3 Graphics Gems](http://www.crytek.com/download/Sousa_Graphics_Gems_CryENGINE3.pdf)。
-
-在这么多资料(其实是现成代码...)的帮助下，我主要参考CryEngine里的SMAA 1TX山寨了下，UE4的那个有点过于麻烦了。
+Real-Time Anti-Aliasing](http://iryoku.com/aacourse/)(很多sig course好棒好棒)、[High Quality Temporal Supersampling](https://de45xmedrsdbp.cloudfront.net/Resources/files/TemporalAA_small-59732822.pdf)、[CryENGINE3 Graphics Gems](http://www.crytek.com/download/Sousa_Graphics_Gems_CryENGINE3.pdf)。在这么多资料(其实是现成代码...)的帮助下，我主要参考CryEngine里的SMAA 1TX山寨了下，UE4的那个有点过于麻烦了。
 
 <!--more-->
 
-## 备忘
+# 备忘
 
 - Unity中矩阵是左乘的，和UE4里相反，所以在对projectionMatrix做jitter的时候要反下
 - `UNITY_MATRIX_MVP`在之前的post里已提过，这个是卡我最久的地方(╯‵□′)╯︵┻━┻
@@ -22,7 +19,7 @@ Real-Time Anti-Aliasing](http://iryoku.com/aacourse/)(很多sig course好棒好�
 
 其实都是一些API上的东西，搞的我连蒙带猜的...
 
-## 效果
+# 效果
 
 自我感觉效果还行吧...一开始边缘一直有闪动，慢慢改对代码之后降低了不少，最后就调参数了只能...
 
@@ -44,7 +41,7 @@ Nexus5真机
 
 ![unity_android_temporal_aa_compare](/images/unity_android_temporal_aa_compare.png)
 
-## 性能
+# 性能
 
 在Nexus 5上跑了下Shadow Gun Sample Level这个场景，每帧消耗时间大概增加了7ms；从profiler上来看主要是因为用到了Depth Texture，而且看起来不是直接用的ZBuffer导致的(见{% post_link unity-misc %})，话说还是Defer大法好-_,-
 

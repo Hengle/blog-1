@@ -2,17 +2,16 @@
 layout: post
 title: Unity本地化应用名
 date: 2016/3/30
-tags:
-- Unity
+tags: Unity
 ---
 
 做本地化的时候，一方面我们要完成游戏内的文本多语言，另一个不可忽略的细节是App名字的本地化。就前者而言，Unity的Asset Store里有一个很好用的插件[I2 Localization](https://www.assetstore.unity3d.com/en/#!/content/14884)；但后者在网上的相关资料不多。下面就分享一下具体在Android和iOS下分别如何本地化应用名。
 
-![unity_localize_app](/images/unity_localize_app.png)
-
 <!--more-->
 
-### Android 
+![unity_localize_app](/images/unity_localize_app.png)
+
+## Android 
 
 安卓部分比较简单，在AndroidManifest.xml(不管是Unity自动生成的或者是项目里手写的)中：
 
@@ -39,7 +38,7 @@ tags:
 
 注：直接在Assets/Plugins里放Android res的方法在Unity 5里已被标注为废弃，官方建议用aar的形式，不过我就先偷懒了…
 
-### iOS
+## iOS
 
 苹果会麻烦一些，如果要做本地化的话需要修改两个地方
 
@@ -48,7 +47,7 @@ tags:
 
 我是基于喵神的[XUPorter](https://github.com/onevcat/XUPorter)自己实现的：
 
-{% codeblock lang:C# %}
+{% codeblock lang:csharp %}
 Dictionary<string, object> dict = (Dictionary<string, object>)PlistCS.Plist.readPlist(plistPath);
 if(dict.ContainsKey("CFBundleDisplayName"))
 {

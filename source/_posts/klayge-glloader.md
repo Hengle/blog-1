@@ -2,15 +2,14 @@
 layout: post
 title: glloader代码阅读笔记
 date: 2015/3/28
-tags:
-- KlayGE
+tags: KlayGE
 ---
 
 (准备慢慢把之前移植KlayGE过程中的笔记整理出来，估计先梳理完几个子项目，然后按照模块和例子写个系列吧...主要记录思路和一些学习体会~)
 
-[glloader](http://www.klayge.org/category/klayge/glloader/)是一个跨平台的OpenGL扩展库，可以拿来载入OpenGL 1.0-4.2，OpenGL ES 1.0-2.0，同时也支持WGL、GLX、EGL和其他GL/GLES扩展。目前windows/linux/darwin及iOS/Android都可以使用，拿来做跨平台的项目非常方便，封装掉了不同平台的GL细节；另一个牛逼的地方在于可以通过维护xml，来保持这个项目与最新的spec一致。下面主要分两块来看：一个是基于xml描述的registry，另一个则是跨平台的载入机制。
-
 <!--more-->
+
+[glloader](http://www.klayge.org/category/klayge/glloader/)是一个跨平台的OpenGL扩展库，可以拿来载入OpenGL 1.0-4.2，OpenGL ES 1.0-2.0，同时也支持WGL、GLX、EGL和其他GL/GLES扩展。目前windows/linux/darwin及iOS/Android都可以使用，拿来做跨平台的项目非常方便，封装掉了不同平台的GL细节；另一个牛逼的地方在于可以通过维护xml，来保持这个项目与最新的spec一致。下面主要分两块来看：一个是基于xml描述的registry，另一个则是跨平台的载入机制。
 
 # GL registry
 

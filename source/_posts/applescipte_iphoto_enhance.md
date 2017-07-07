@@ -2,16 +2,16 @@
 layout: post
 title: 使用AppleScipte进行iPhoto批量enhance
 date: 2013/4/5
+toc: false
 ---
 
 嗯，这是拖了很久的一篇日志了~上个暑假实习的时候做的事情是照片的自动增强，与iPhoto的enhance进行了比较。但是需要生成几千张照片的批量enhance比较麻烦~
 
-网上其实有[iPhoto Batch Enhancer](http://www.feroxsoft.de/ibe/index.php.en)可以实现这个功能，但需要付费。它本身也是用AppleScript实现的，经过一番研究我也自己倒腾了出来。
-
 <!--more-->
 
-{% codeblock lang:applescript %} 
+网上其实有[iPhoto Batch Enhancer](http://www.feroxsoft.de/ibe/index.php.en)可以实现这个功能，但需要付费。它本身也是用AppleScript实现的，经过一番研究我也自己倒腾了出来。
 
+{% codeblock lang:applescript %} 
 tell application "iPhoto"
      my enabledGUIScripting(true)
      activate

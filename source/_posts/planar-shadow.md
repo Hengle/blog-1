@@ -2,15 +2,15 @@
 layout: post
 title: Planar Shadow
 date: 2016/12/23
-tags:
-- Unity
+tags: Unity
+toc: false
 ---
 
 工作压力大，太久没写shader了要换换脑子解压...今天晚上整了下Planar Shadow玩
 
-![planar_shadow](/images/planar_shadow.gif)
-
 <!--more-->
+
+![planar_shadow](/images/planar_shadow.gif)
 
 如果要做半透明的话手机上stencil闹心啊(咸鱼失去梦想脸
 

@@ -2,15 +2,15 @@
 layout: post
 title: 填充率!填充率!填充率!
 date: 2016/3/5
-tags:
-- Unity
+tags: Unity
+toc: false
 ---
 
 最近新项目快上线了，专门抽了一天做性能优化。不开锁帧情况下，在Nexus 5和Nexus 6上始终稳定在60fps(恩刚开始写的时候就比较注意细节，嗯嗯)。在红米测试的时候发现了一个奇怪的现象：战斗界面维持60fps没问题；进入UI界面之后瞬间掉到45fps，甚至有的复杂界面掉到30fps。
 
-![fillrate_profiler](/images/fillrate_profiler.png)
-
 <!--more-->
+
+![fillrate_profiler](/images/fillrate_profiler.png)
 
 看到这个现象的第一反应当然是查vertices/trianges以及batch：
 
@@ -25,7 +25,7 @@ tags:
 
 当然，用空的Text还是有点脏的，最后我针对UGUI 5.2写了个简单脚本来完成这个功能，一方面能响应点击、另一方面完全不参与绘制~
 
-{% codeblock lang:c# %}
+{% codeblock lang:csharp %}
 using UnityEngine;
 using System.Collections;
 

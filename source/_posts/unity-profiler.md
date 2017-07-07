@@ -2,17 +2,17 @@
 layout: post
 title: Unity Profiler介绍
 date: 2014/12/27
-tags:
-- Unity
+tags: Unity
+toc: false
 ---
 
 Profiler是3D引擎中一个非常重要的工具~之前为了测试Unity在手机上的性能，做了一系列测试，然后发现了一个有点奇怪的现象：同样是若干旋转模型+一个光源，在Nexus 5运行到30fps时，有俩Test Case面片数相差的非常多~(都故意没开Dynamic/Static Batch DrawCall)。
 
+<!--more-->
+
 | Test Case 1: | Test Case 2: |
 |----------------------------------------------------------|----------------------------------------------------------|
 | ![unity_profiler_test1](/images/unity_profiler_test1.png) | ![unity_profiler_test2](/images/unity_profiler_test2.png) |
-
-<!--more-->
 
 Unity自带了一个[Profiler](http://docs.unity3d.com/Manual/Profiler.html)，这是个Pro版本才有的功能，准备利用这个试试能不能找到原因。话说官方文档里的这块说明其实不全，还需要修改下两个地方才能在Android上打开这个：
 ![unity_profiler_android](/images/unity_profiler_android.png)

@@ -2,18 +2,17 @@
 layout: post
 title: 优化Unity项目编译速度
 date: 2016/11/27
-tags:
-- Unity
+tags: Unity
 thumbnail: /images/teaser/goto.png
 ---
 
 这个是最近一段时间带着子川一起做的一个小东西：如何优化大项目C#编译速度。这个idea主要是因为使用了slua之后，每次修改C#部分编译实在是太慢了... 下面将介绍两个不同的思路，心急的朋友可以直接看第二个解决方案及实战，因为这个说穿了其实就一句话，<del>写第一部分只不过是因为折腾了非常久的`MonoImporter/PluginImporter/MonoScript`结果发现没用上而不爽(逃</del>
 
+<!--more-->
+
 # 测试环境
 
 我使用的是之前比较lua解决方案里的slua工程，引擎版本Unity 5.3.6f1(其他设备信息跳过因为都是在同一台电脑上...)。在测试之前还需要写一个脚本来统计编译时间，这里简单粗暴的写了一个小脚本去不断刷新`EditorApplication.isCompiling`即可；顺便因为每次编译完成之后重新加载dll会导致`static bool compiling`丢失，因此保存一下。
-
-<!--more-->
 
 {% codeblock lang:csharp %}
 [InitializeOnLoad]

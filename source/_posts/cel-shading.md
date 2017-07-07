@@ -2,20 +2,17 @@
 layout: post
 title: 卡通渲染
 date: 2016/6/10
-tags:
-- GameArtTricks
-- Translation
+tags: [GameArtTricks,Translation]
+toc: false
 ---
 
-[原文链接](https://simonschreibt.de/gat/cell-shading/)
-
 实现一个简单的漫画效果(在物体周围描边)是非常简单的事情。多年前在Games Academy上，制作漫画风格冒险游戏[Tummy Trundle](http://www.games-academy.de/home/projekte.html)的开发人员研究如何实时的实现这个效果。[Falk](http://www.fa-so.de/)提出了一个解决方案：复制3D模型本身，扭转法线方向，将其设为黑色的材质球并沿着法线挤压其表面。
+
+<!--more-->
 
 ![mrturtle_stepbystep](/images/gamearttricks/mrturtle_stepbystep.gif)
 
 本质上是画了一个比原来略大一些的黑色海龟。但是因为这个黑色模型的法线是翻转过的，所以只能看到其重叠部分。
-
-<!--more-->
 
 ### (原文作者)更新1
 
@@ -57,3 +54,5 @@ tags:
 (译注: 其实这个小花我后来问了下，就是一个圆点上下左右这样移动8次组成的...我一开始理解成可以映射成任意形状)
 
 希望大家能喜欢这个小技巧，并感谢Nicolae分享！
+
+[原文链接](https://simonschreibt.de/gat/cell-shading/)

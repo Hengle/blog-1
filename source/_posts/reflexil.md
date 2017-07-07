@@ -2,25 +2,22 @@
 layout: post
 title: Reflexi简明教程
 date: 2016/3/5
-tags:
-- Unity
-- C#
-- Translation
+tags: [Unity,C#,Translation]
 updated: 2016/3/7
 ---
 
 本文是[Assembly Manipulation and C# / VB.NET Code Injection](http://www.codeproject.com/Articles/20565/Assembly-Manipulation-and-C-VB-NET-Code-Injection)的翻译，已得到作者授权。该教程作者(亦工具作者)现在在微软开发UnityVS...
 
+<!--more-->
+
 本文使用的老版本界面与最新版本有所不同，而且内容覆盖的功能比较全，但介绍的比较笼统；之后我会结合Unity写一些具体的例子。
 就我的使用经验来说，直接操作IL code还是比较丧心病狂的，利用后面的C#/VB.NET注入功能会方便很多，而且修改作用域、属性等功能其实用的不多。
 
-<!--more-->
-
-## 最新版本下载
+# 最新版本下载
 
 最新版本的Reflexi可以在[官网](http://reflexil.net/)下载。
 
-## 简介
+# 简介
 
 [Reflector](http://reflector.net/)和[JustDecompile](http://www.telerik.com/products/decompiler)都是能用来对各类程序集进行深度检查的工具，他们同时也都能对.NET的IL code进行反汇编。但是这两个工具都无法修改对应程序集的结构或IL code。在[Jb EVAIN](http://evain.net/blog/)实现的强大**[Mono.Cecil](http://www.mono-project.com/Cecil)**帮助下，Reflexil达到了这个目标。作为一个专门用来处理IL code的插件，Reflexil实现了一个完整的指令编辑器，并允许直接注入C#/VB.NET代码。下面将用两个例子具体说明。
 
@@ -28,7 +25,7 @@ updated: 2016/3/7
 
 让我们先实现一个简单的求和应用。
 
-{% codeblock lang:c# %}
+{% codeblock lang:csharp %}
 using System;
 using System.Windows.Forms;
 
@@ -215,11 +212,11 @@ namespace ReflexilDemo
 ![asmcheck](/images/reflexil/asmcheck.png)
 ![asmcheckok](/images/reflexil/asmcheckok.png)
 
-## 总结
+# 总结
 
 **Reflexil**完全基于**Mono.Cecil**。核心在于**Mono.Cecil**能够脱离运行时环境载入程序集，所以操作起来不需要对应的资源限制、能在孤立的`AppDOmain`里完成。另外`System.Type`和`Mono.Cecil.TypeDefinition`分别独立实现了.NET类型概念，两者之间并没有联系。因此如果我们希望通过写程序(而不是直接修改IL code)的方式完成第一个例子(重载`Show`来修改窗口标题栏)，在**Mono.Cecil**帮助下也能很方便的完成。
 
-## 翻译后记
+# 翻译后记
 
 这是我第一次翻译一些内容，因为除了汉语之外只看得懂一些英文，所以每次想动手但又觉得没啥必要...最近受Trace激励，觉得还是得动手整点，不管有没有人看~
 

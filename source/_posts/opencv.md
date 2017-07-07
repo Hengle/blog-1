@@ -1,13 +1,14 @@
 ---
 layout: post
-title: OpenCV Related projects
+title: OpenCV Related Projects
 date: 2012/3/20
-tags:
-- OpenCV
-- C++
+tags: [OpenCV,C++]
+toc: false
 ---
 
 最近在做的一些工作都是基于opencv的，准备有空将部分代码拆分、整理好之后挂上来。
+
+<!--more-->
 
 现在已近挂了一个{% post_link meanshift %}，是做图片分割的。
 
@@ -15,8 +16,6 @@ tags:
 
 干活去了-。-
 
-<!--more-->
+### UPDATES
 
-###UPDATES
-
-2012-3-27  嗯，变换的部分也挂出来了，戳{% post_link homography %}。话说正在学CUDA，有的可以考虑能不能加速一下。
+2012-3-27 嗯，变换的部分也挂出来了，戳{% post_link homography %}。话说正在学CUDA，有的可以考虑能不能加速一下。

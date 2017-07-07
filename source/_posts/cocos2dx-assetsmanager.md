@@ -2,11 +2,13 @@
 layout: post
 title: cocos2d-x Assets Manager断点续传
 date: 2014/12/2
-tags:
-- cocos2d-x
+tags: cocos2d-x
+toc: false
 ---
 
 基于cocos2d-x 3.x版本修改的Assets Manager，加几行代码就能实现断线续传功能...so easy
+
+<!--more-->
 
 {% codeblock lang:cpp %}
 bool AssetsManager::downLoad()
@@ -25,8 +27,6 @@ bool AssetsManager::downLoad()
 +    
 +   fp = fopen(outFileName.c_str(), "ab");
 {% endcodeblock %}
-
-<!--more-->
 
 然后在下面设置curl的地方
 {% codeblock lang:cpp %}

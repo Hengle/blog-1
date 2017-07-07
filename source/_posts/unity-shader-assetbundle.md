@@ -2,20 +2,19 @@
 layout: post
 title: Shader in AssetBundle
 date: 2017/1/29
-tags:
-- Unity
+tags: Unity
 updated: 2017/2/14
 thumbnail: /images/teaser/ab_shader.png
+toc: false
 ---
 
-关于Resources和AssetBundle优劣之前已经提过很多次了(参考官方教程[The Resources folder
-](https://unity3d.com/learn/tutorials/topics/best-practices/resources-folder))，正好最近@张迪在做框架AssetBundle部分的优化，特此整理一下两个特常见的坑及对应解决办法。之前在[关于Unity中的资源管理，你可能遇到这些问题](http://blog.uwa4d.com/archives/QA_ResourceManagement.html)里有有人提到过这个问题：
+关于Resources和AssetBundle优劣之前已经提过很多次了(参考官方教程[The Resources folder](https://unity3d.com/learn/tutorials/topics/best-practices/resources-folder))，正好最近@张迪在做框架AssetBundle部分的优化，特此整理一下两个特常见的坑及对应解决办法。之前在[关于Unity中的资源管理，你可能遇到这些问题](http://blog.uwa4d.com/archives/QA_ResourceManagement.html)里有有人提到过这个问题：
+
+<!--more-->
 
 > Q6: 请问粒子特效的Shader是否不能使用依赖打包？ 我们对Shader的模型和特效使用了依赖打包，运行的时候发现模型显示是正常的，但是粒子特效使用的Shader就不能正常运行，特效显示不正常。而在编辑器中，我们看到Material中的Shader是存在的。这时候如果重新手动给这个Material指定同样的Shader，这个粒子特效就能正常显示，请问这是什么原因引起的？
 
 这里主要分享如何在编辑器里模拟AssetBundle时处理Shader(之后我们会分享『如何从框架层面实现0冗余』相关经验)
-
-<!--more-->
 
 在我们的框架里是这么区分资源的：
 
@@ -36,7 +35,7 @@ thumbnail: /images/teaser/ab_shader.png
 
 在第一步中，除了需要打包项目内本身所有Shader之外，还需要打包builtin shaders，便于后面几步查找; 第三步利用了反射来修改所有材质球
 
-{% codeblock lang:c# %}
+{% codeblock lang:csharp %}
 System.Type materialType = typeof(Material);
 Component[] comps = go.GetComponentsInChildren<Component>();
 foreach (Component comp in comps)
@@ -62,10 +61,8 @@ foreach (Component comp in comps)
 
 这样的最大好处在于**不需要额外的操作**：还有一个解决方案是每个项目里解压一份builtin shader，然后强制使用项目内的版本而不是Resources/unity_builtin_extra下的版本。相比之下我们的解决方案只是在打包编辑器版本shader时解压出来然后及时删除，同时这样替换的比较干净(包括脚本里的`public Material lineMaterial;`这种也能被处理到)，不需要任何人工操作。当然代价就是打包的时候比较慢，同时载入的时候使用了反射来查找所有需要替换shader的材质球也有一定的性能损失。
 
-## update
-
-知乎评论区提出了一个解决方案: 
+ps. 知乎评论区提出了一个解决方案: 
 
 > 这个问题，直接把编辑器环境变成opengl es2.0，具体内容在player setting pc的设置 other settings 去掉“Auto Graphics API for Windows”勾，在里面添加opengl es2.0，并且放到第一位。
 
-我测试了下Windows下确实可以，但是OSX下没有GLES2/3。
+我测试了下Windows下确实可以，但是OSX下没有GLES2/3，所以还是有点蛋疼的。

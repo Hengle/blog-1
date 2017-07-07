@@ -2,13 +2,8 @@
 layout: post
 title: KFL代码阅读笔记
 date: 2015/8/28
-tags:
-- KlayGE
-- C++
-image:
-  feature: teaser/DateALive.jpg
-  credit: Date A Live
-  creditlink: http://akw-art-design.deviantart.com/art/Date-A-Live-Yoshino-388967654
+tags: [KlayGE,C++]
+toc: false
 ---
 
 KlayGE的基础库，就挑看到觉得有意思的地方整理下，主要是有不少c++0x的花样很有趣。
@@ -29,7 +24,7 @@ ps. 龚大写的是`(ptr+alignment-1) & (-alignment)`，一眼看下去不太习
 
 不过学习了一下新的模板知识~我对这货的印象还停留在展开上，现在11出来以后编译阶段已经可以做很多计算(编译阶段计算字符串Hash已被龚大玩出花)和检查操作(`static_assert`)。譬如根据模板类型，生成一个`optional`，需要注意的是对于`void`、需要使用`void_t`，从而保证有有`::type`。
 
-{% codeblock lang:C# %}
+{% codeblock lang:csharp %}
 struct void_t
 {
 	typedef void_t type;

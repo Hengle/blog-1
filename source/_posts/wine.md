@@ -1,9 +1,8 @@
 ---
 layout: post
-title: 通过Wine在OSX平台上使用d3dcompile
+title: OSX平台上使用d3dcompile
 date: 2014/12/21
-tags:
-- C++
+tags: [C++,KlayGE]
 updated: 2015/3/30
 ---
 
@@ -32,18 +31,18 @@ D3DCompile(__in_bcount(SrcDataSize) LPCVOID pSrcData,
 
 但是看起来很简单的需求，结果被Wine坑了一脸，且听我慢慢道来...
 
-## 64-bit Wine
+# 64-bit Wine
 
 brew安装的默认就是32-bit，无法执行x64的dll或exe；而且KlayGE默认是编译的64-bit。我尝试下载源代码
 自己编译，但是打开`--enable-win64`之后直接编译失败。[Wine64文档](http://wiki.winehq.org/Wine64)上说 Please also note GccVersions (you need at least gcc 4.4 to compile Wine for x86-64 because of builtin_ms_va_list support)，貌似这是个[clang bug](http://llvm.org/bugs/show_bug.cgi?id=8851)而且还没人管。
 
 既然暂时找不到简单的解决方案，所以我准备先用32-bit凑合，走通流程再说。
 
-## 纠结的踩坑之旅
+# 纠结的踩坑之旅
 
 动手写代码前，先查文档，然后导致我后面一系列弯路的杯具就开始了！一开始我是搜到了[Winelib](http://wiki.winehq.org/Winelib)，结果就被第一段误导了 A good way to fix these is to try to compile applications for which we have the source under Winelib，以为有源代码才能用这货。Wine本身没有找到什么开发者文档、倒是有一些用户文档，没办法就直接看头文件上了。
 
-### Try 1
+## Try 1
 
 我翻了下wine/dlls文件夹，非常惊喜的发现直接有d3dcompiler_43.dll.so，而且配套的[d3dcompiler_43.spec](https://github.com/wine-mirror/wine/blob/master/dlls/d3dcompiler_43/d3dcompiler_43.spec)中`@ stdcall D3DCompile(ptr long str ptr ptr str str long long ptr ptr)`表示这个API能直接用，看起来so easy的样子(后来发现自己真是naïve)。兴冲冲的用`dlopen`和`dlsym`试一下：
 
@@ -54,7 +53,7 @@ pD3DCompile p = reinterpret_cast<pD3DCompile>(dlsym(h, "D3DCompile"));
 
 结果一调用就崩溃，看了下asm是挂在[`EnterCriticalSection(&wpp_mutex);`](https://github.com/wine-mirror/wine/blob/master/dlls/d3dcompiler_43/compiler.c#L709)，百思不得其解。
 
-### Try 2
+## Try 2
 
 重新翻了遍头文件，参考[library.h](https://github.com/wine-mirror/wine/blob/master/include/wine/library.h)，改用这俩函数。不过问题依旧：能定位到函数入口，但是一执行就挂。
 
@@ -65,13 +64,13 @@ extern void *wine_dlsym( void *handle, const char *symbol, char *error, size_t e
 
 继续参考了[loader/main.c](https://github.com/wine-mirror/wine/blob/master/loader/main.c)里的一些初始化代码，加上之后依然不行。
 
-### Try 3
+## Try 3
 
 经过前两次尝试开始迷茫……丫到底行不行？于是尝试下运行在`wine/dlls/d3dcompiler_43/tests`下运行`make hlsl.ok`，妥妥的运行失败。难道说这个功能就是不对的？我查了下[Wine test runs](https://test.winehq.org/data/)，最新的Release 1.7.33也是hlsl.c:141: Tests skipped: not compiling vertex shader due to lacking wine HLSL support!，也就是说`D3DCompile`编译失败(虽然它的程序没有崩溃)。
 
 虽然官方自带的测试都运行不过，但我觉得这个很不科学：Wine在运行Windows上的游戏的时候不可能绕开这个函数。昨天在[Wine Forum](https://forum.winehq.org/viewtopic.php?f=9&t=23949)和IRC上问了但木有反馈。
 
-### Try 4
+## Try 4
 
 决定换个思路，直接下一个d3dcompile.dll，然后看一下有没有办法直接在OSX上调用dll。又是一通google之后返回了原点：没错就是WineLib! 在一个看起来是[IRC聊天记录整理出来的Wiki](http://wine-wiki.org/index.php/WineLib#Calling_a_Native_Windows_dll_from_Linux)里(话说还能再偷懒点么)，有人提供了一个例子，实现了Calling a Native Windows dll from Linux。通过山寨这个，终于使用如下代码尝试成功：
 
@@ -115,11 +114,11 @@ Z:\\Users\\anthony\\Desktop\\Shader@0x406A5570(5,5): error X3000: syntax error: 
 - 如果同时引入iostream等会导致错误，我没去具体研究怎么解决、反正用C接口也能凑合了；
 - 编译会生成`a.out`和`a.out.so`两个文件，其中前者其实是一个脚本，运行`./a.out --xxx`等价于`wine a.out.so --xxx`
 
-## TODO
+# TODO
 
 接下来要将这个东西结合到KlayGE里去。正如前面所说，由于架构问题，没办法直接将这个东西编译链接进去，所以我准备直接`system`调用配合文件来传数据，希望不要有别的坑了……
 
-### update 2014.12.23
+## 调试之坑
 
 接入的时候，遇到了一个非常奇怪的问题：调试的时候很容易出现程序异常退出(exit code -1)
 
@@ -134,6 +133,6 @@ Z:\\Users\\anthony\\Desktop\\Shader@0x406A5570(5,5): error X3000: syntax error: 
 
 我单独写了一个小程序反复通过`system`去调用wine，倒是一直没复现；猜测可能是KlayGE的多线程环境下，调用wine导致LLVM调试功能出问题。目前没能解决这个，只利用KlayGE的缓存kfx机制绕开。
 
-### update 2015.3.30
+## 问题解决
 
-想起来就更新下...最后通过运行`wineserver -p`解决了上述问题。目前KlayGE已移除Cg，全部转用wine咯(顺便我花了几个下午把linux重新跑通了...)。
+想起来就更新下...之前的问题通过运行`wineserver -p`解决了。目前KlayGE已移除Cg，全部转用wine咯(顺便我花了几个下午把linux重新跑通了...)。

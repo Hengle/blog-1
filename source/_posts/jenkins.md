@@ -2,21 +2,20 @@
 layout: post
 title: Jenkins自动化出包流程分享
 date: 2016/8/25
-tags:
-- Unity
+tags: Unity
 thumbnail: /images/teaser/jenkins_list.png
 ---
 
 目前我司所有Unity项目已经全部部署在Jenkins服务器上，实现一键自动出包+自动上传Test Flight。
+
+<!--more-->
 
 这么做有两个好处：
 
 - 保持出包环境一致，所有流程自动化，避免人为操作带来的问题；
 - 方便偷懒...而且出包机器是一台28核56线程的黑苹果(某宝万能） ~~以后还能拿来跑Swarm~~
 
-<!--more-->
-
-## Jenkins安装配置
+# Jenkins安装配置
 
 `brew install jenkins`之后，根据需要修改下`homebrew.mxcl.jenkins.plist`:
 
@@ -48,7 +47,7 @@ thumbnail: /images/teaser/jenkins_list.png
 
 我的配置里修改了Jenkins数据目录以及监听外网8080端口。
 
-## Jenkins编译Unity
+# Jenkins编译Unity
 
 这部分网上有不少现成的资料，我主要参考了[Jenkins 集成Unity3D Xcode](http://www.cnblogs.com/qingjoin/p/3944392.html)。
 
@@ -62,7 +61,7 @@ ps. 调用`BuildPipeline.BuildPlayer`的时候一定要检查返回值，因为�
 
 pss. XCode Plugin可以在Custom xcodebuild arguements里加一行`DEPLOYMENT_POSTPROCESSING=YES`
 
-## 自动上传Test Flight
+# 自动上传Test Flight
 
 主要参考了[详解Shell脚本实现iOS自动化编译打包提交](http://www.jianshu.com/p/bd4c22952e01)一文，其实就是`altool`的调用。之前说了包的文件名是有时间戳的，因此可以排序之后找到最新的一个包，调用上传即可。
 
