@@ -1,7 +1,7 @@
 ---
 title: Android下Streaming Assets特殊姿势
 date: 2017-07-20 00:10:20
-tags: Unity
+tags: [Unity,Android]
 toc: false
 ---
 
