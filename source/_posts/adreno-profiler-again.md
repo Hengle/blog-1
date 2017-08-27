@@ -3,11 +3,13 @@ layout: post
 title: Adreno Profiler再次修改
 date: 2016/12/1
 tags: Android
-updated: 2017/5/6
+updated: 2017/8/27
 toc: false
 ---
 
-记录用...之前在{% post_link customized-adreno-profiler %}里修改过dll来修BUG...最近又捡起这个工具(我下的最新版本是4.0.5511.5192)，修了一个崩溃错误
+记录用...之前在{% post_link customized-adreno-profiler %}里修改过dll来修BUG...最近又捡起这个工具(我下的最新版本是4.0.5511.5192)，修了一个崩溃错误。
+
+更新：最近好几个朋友问我要，然后我发现我从Jekyll换到Hexo的时候有些文档归档掉了...这里放出我手头修改的最新版本的[QXProfilerControlsCS.dll](/downloads/QXProfilerControlsCS.dll)
 
 <!--more-->
 
