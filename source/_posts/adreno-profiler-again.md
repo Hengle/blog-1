@@ -11,6 +11,8 @@ toc: false
 
 更新：最近好几个朋友问我要，然后我发现我从Jekyll换到Hexo的时候有些文档归档掉了...这里放出我手头修改的最新版本的[QXProfilerControlsCS.dll](/downloads/QXProfilerControlsCS.dll)
 
+** 申明: 我不会回答任何关于资源导出方面的问题。博客内容我单纯作为技术分享，并不想以此盈利，也不想惹麻烦。如果读者有志于学习渲染方面内容，我很乐意与大家交流学习，但是就本话题就此打住。 **
+
 <!--more-->
 
 ps. 虽然官方已经废弃Adreno，但是我觉得比SnapDragon好用啊啊啊
