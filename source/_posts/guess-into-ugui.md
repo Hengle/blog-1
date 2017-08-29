@@ -10,7 +10,7 @@ ps. 后面的代码都以Unity 5.x为例分析。
 
 <!--more-->
 
-# CanvasRender
+# CanvasRenderer
 
 从文档来说，所有UGUI需要绘制的组件其实都是通过CanvasRenderer来渲染的。为了分析这个类，使用了以下参考内容 (毕竟连蒙带猜并不是纯猜...)
 
@@ -163,7 +163,7 @@ public virtual Material GetModifiedMaterial(Material baseMaterial)
 
 ## 贪心策略分析
 
-这里核心点在于如何理解Depth：**Depth表示的是这个元素最早能在第几步绘制**。如果说一个CanvasRender对应的Instruction的Depth=3，那么它必须等所有Depth<3的Instruction都绘制完之后再绘制，否则可能出现BUG。
+这里核心点在于如何理解Depth：**Depth表示的是这个元素最早能在第几步绘制**。如果说一个CanvasRenderer对应的Instruction的Depth=3，那么它必须等所有Depth<3的Instruction都绘制完之后再绘制，否则可能出现BUG。
 
 在梳理完策略之后，我实现了一个小工具去模拟BuildBatch，在简单UI的情况下模拟结果和FrameDebugger结果一致。然后顺便发现了这种贪心策略的盲点：
 
