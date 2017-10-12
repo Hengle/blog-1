@@ -2,6 +2,7 @@
 layout: post
 title: 移动设备压缩纹理使用技巧
 date: 2016/1/23
+updated: 2017/9/30
 tags: Unity
 toc: false
 ---
@@ -22,4 +23,6 @@ toc: false
 
 ![texture_packer_polygon](/images/texture_packer_polygon.png)
 
-ps. 最早我们使用的是将原始图片拆分成RGB和Alpha Mask两张图的策略，然后替换默认的UI Shader。但是[Unity-5.2](http://unity3d.com/cn/unity/whats-new/unity-5.2)开始默认将ETC2设为默认(顺便支持了ETC1 Compression for Sprite Atlases)，所以我就懒得切图+每个Sprite拖材质球了...直接一张RGBA进行压缩完事儿
+~~ps. 最早我们使用的是将原始图片拆分成RGB和Alpha Mask两张图的策略，然后替换默认的UI Shader。但是[Unity-5.2](http://unity3d.com/cn/unity/whats-new/unity-5.2)开始默认将ETC2设为默认(顺便支持了ETC1 Compression for Sprite Atlases)，所以我就懒得切图+每个Sprite拖材质球了...直接一张RGBA进行压缩完事儿~~
+
+再ps. 目前我们又改回Alpha Split策略，原因是我们发现有安卓模拟器『号称支持ES3』但是ETC2支持的有问题，导致UI全黑了...实属无奈之下改回分离，不过好处是这次我们的所有UI都使用了自己封装的SGImage，所以在框架层支持起来非常省事，不需要手动维护材质球了...
