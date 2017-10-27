@@ -34,7 +34,7 @@ toc: false
 
 ps. 我曾经试图用自己的脚本去接管原生的Prefab按钮，后来发现只有uPrefabs的思路靠谱...不过这样会带来其他的问题，且听下文分解。
 
-## Bake & PropertyModification
+## Cook & PropertyModification
 
 这里分享一个兄弟团队的思路，他们的解决方案基于[poor mans nested prefabs](http://framebunker.com/blog/poor-mans-nested-prefabs/)：父Prefab保存了子Prefab的引用；在编辑时获取子Prefab信息后直接利用Editor API来“绘制”子Prefab；在打包的时候加入一步**COOK步骤**，根据引用将子Prefab实例化出来。
 
