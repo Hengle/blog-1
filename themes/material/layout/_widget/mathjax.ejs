@@ -2,7 +2,7 @@
     MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
         tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
         TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
-        messageStyle: "none", showMathMenu: false, showMathMenuMSIE: false
+        messageStyle: "none"
     });
 </script>
 <script type="text/x-mathjax-config">
@@ -13,8 +13,8 @@
         }
     });
 </script>
-<% if(theme.mathjaxcdn.use === true) { %>
-    <script src="<%= theme.mathjaxcdn.base %>/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<% if(theme.materialcdn.use === true) { %>
+    <script src="<%= theme.materialcdn.base %>/js/mathjax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <%}else{%>
-    <script type="text/javascript" src="/js/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="/js/mathjax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <%}%>

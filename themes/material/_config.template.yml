@@ -33,8 +33,8 @@ scheme: Paradox
 
 # UI & UX: slogan, color, effect
 uiux:
-    slogan: "A game developer interested in rendering, with focus on Unity now."
-    theme_color: "#EEEEEE"
+    slogan: "Hi, nice to meet you"
+    theme_color: "#0097A7"
     theme_sub_color: "#00838F"
     hyperlink_color: "#00838F"
     button_color: "#757575"
@@ -54,7 +54,7 @@ reading:
 # Thumbnail Settings
 thumbnail:
     purecolor:
-    random_amount: 15
+    random_amount: 19
 
 # Background Settings
 # bing available parameter:
@@ -95,7 +95,7 @@ card_elevation: 2
 # Copyright
 # Specify the date when the site was setup.
 #   For example, if you set it as 2015, then footer will show '© 2015 - 2017'
-copyright_since: 2012
+copyright_since:
 
 # Qrcode for redirect at other device
 #   use: choose which method to generate the qrcode for each posts.
@@ -116,20 +116,20 @@ qrcode:
 toc:
 #   use: choose whether the line_number of toc will show or not.
 #       Available value of "linenumber": true | false
-    linenumber: false
+    linenumber: true
 
 # SNS Menu
 sns:
-    email: qiankanglai@gmail.com
-    facebook: 
-    twitter: 
-    googleplus: 
+    email: youremail@email.com
+    facebook: "https://www.facebook.com/facebook"
+    twitter: "https://twitter.com/twitter"
+    googleplus: "https://www.google.com/"
     weibo:
     instagram:
     tumblr:
-    github: https://github.com/qiankanglai
+    github:
     linkedin:
-    zhihu: https://www.zhihu.com/people/qian-kang-lai
+    zhihu:
     bilibili:
     telegram:
 
@@ -145,16 +145,16 @@ sns_share:
 
 # Sidebar Customize
 sidebar:
-    #dropdown:
-    #    Email Me:
-    #        link: "#"
-    #        icon: email
+    dropdown:
+        Email Me:
+            link: "#"
+            icon: email
     homepage:
         use: true
         icon: home
         divider: false
     archives:
-        use: false
+        use: true
         icon: inbox
         divider: false
     categories:
@@ -162,28 +162,16 @@ sidebar:
         icon: chrome_reader_mode
         divider: false
     pages:
-        标签云:
-            link: "/tags"
-            icon: label
-            divider: false
-        时间轴:
-            link: "/timeline"
-            icon: timeline
-            divider: false
-        关于我:
-            link: "/about"
-            icon: person
-            divider: false
-        友情链接:
-            link: "/links"
-            icon: links
-            divider: false
+        #About:
+            #link: "/about"
+            #icon: person
+            #divider: false
     article_num:
         use: false
         divider: false
     footer:
         divider: true
-        theme: false
+        theme: true
         support: false
         feedback: false
         material: false
@@ -197,15 +185,15 @@ sidebar:
 # When you set 'use' as true, the needed css, js, font file will have a new src.
 # The new src will have the base domain you configured in 'base'.
 materialcdn: 
-    use: true
+    use: 
     base: 
 
 # Comment Systems
 # Available value of "use":
 #     disqus | disqus_click | changyan | 163gentie
 comment:
-    use: disqus_click
-    shortname: qiankanglai
+    use:
+    shortname: # duoshuo or disqus shortname
     changyan_appid:
     changyan_conf:
     changyan_thread_key_type: path
@@ -222,8 +210,8 @@ search:
 # Available value:
 #     baidu | google | cnzz
 analytics:
-    use: google
-    site_id: UA-30309954-1
+    use:
+    site_id:
 
 # Leancloud Views
 leancloud:
