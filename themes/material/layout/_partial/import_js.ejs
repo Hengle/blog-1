@@ -89,7 +89,7 @@
     <% if (theme.prettify.enable) { %>
         <% if ( (is_post()) ) { %>
             $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
                 prettyPrint();
                 })
         <% } %>
