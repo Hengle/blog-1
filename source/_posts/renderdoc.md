@@ -41,3 +41,4 @@ r.Shaders.KeepDebugInfo=1
 更多推荐参考文档[How do I debug a shader?](https://renderdoc.org/docs/how/how_debug_shader.html)。
 
 
+ps. 后来和朋友讨论了下CB乱掉的问题，应该是因为修改Shader之后可能编译器会优化一些变量，导致CB的offset对不上了... 目前用比较脏的手段`OutColor.rgb = OutColor.rgb*0.00001+xxxxx;`绕过先
